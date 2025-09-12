@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  background-color: #141a34;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #141a34;
+}
+.container {
+  background-color: whitesmoke;
+  width: 450px;
+  border-radius: 5px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0px 10px;
+  padding: 10px;
+}
+.img {
+  background-color: whitesmoke;
+  border-radius: 50%;
+  padding: 14px 17px;
+  font-size: 30px;
+  width: 70px;
+  height: 70px;
+  margin-top: -30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+.content {
+  width: 90%;
+  margin: 20px 0px;
+}
+.name,
+.number,
+.e-mail,
+.description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0px;
+  height: 40px;
+  position: relative;
+}
+.name input,
+.number input,
+.e-mail input,
+.description textarea {
+  border: none;
+  background-color: whitesmoke;
+  width: 60%;
+  border-bottom: 1px solid grey;
+  padding: 5px;
+}
+.name input:focus,
+.number input:focus,
+.e-mail input:focus,
+.description textarea:focus {
+  outline: none;
+}
+.name h4,
+.number h4,
+.e-mail h4,
+.description h4 {
+  font-weight: 400;
+}
+.Submit {
+  padding: 10px 20px;
+  background-color: #141a34;
+  color: whitesmoke;
+  border-radius: 3px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.correct,
+.error {
+  display: none;
+  position: absolute;
+  right: 0;
+  font-size: 20px;
+}
+.input::placeholder {
+  color: red;
+}
+.Message {
+  font-weight: 600;
+}

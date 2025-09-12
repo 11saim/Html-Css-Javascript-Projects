@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #514eb9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  background-color: #ffffff;
+  min-width: 400px;
+  border-radius: 10px;
+  margin: 10px;
+}
+.head {
+  text-transform: uppercase;
+  background-color: #edf1fc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.head p {
+  color: grey;
+  font-size: 13px;
+  font-weight: 400;
+}
+.file-area {
+  margin-bottom: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.file {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.file .icon {
+  text-transform: uppercase;
+  font-size: 15px;
+  background-color: #514eb9;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 15px;
+}
+.file .file-info {
+  padding: 0px 10px;
+  width: 80%;
+}
+.file-info .file-name {
+  font-size: 15px;
+  font-weight: 500;
+}
+.file .file-info .file-uploading-details {
+  width: 100%;
+}
+.file .file-info .file-uploading-details .file-uploading-status {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.file .file-info .file-uploading-details .file-size {
+  font-size: 13px;
+  font-weight: 400;
+  color: grey;
+  margin: 0px 20px 0px 0px;
+}
+.file .file-info .file-uploading-details {
+  font-size: 12px;
+  font-weight: 400;
+  color: #514eb9;
+}
+.file .file-info .file-uploading-details .progress {
+  margin: 5px 0px;
+  width: 100%;
+  border-bottom: 5px solid #514eb9;
+  border-radius: 10px;
+  animation: upload 2s ease;
+}
+.file .cancel-upload {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 5%;
+}
+.upload-area {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  border: 2px dashed black;
+  border-radius: 10px;
+}
+.upload-area h2 {
+  font-size: 15px;
+  color: grey;
+  font-weight: 400;
+}
+.upload-area h2 span {
+  cursor: pointer;
+  color: #514eb9;
+  text-decoration: underline;
+}
+.active {
+  border: 1px solid black;
+  background-color: #edf1fc;
+}
+@keyframes upload {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}

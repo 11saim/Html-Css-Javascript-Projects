@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+:root {
+  --Direction: column;
+  --alignment: center;
+  --Display: none;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background: linear-gradient(
+    180deg,
+    rgba(238, 249, 255, 1) 0%,
+    rgba(142, 159, 177, 1) 100%
+  );
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+/* changed */
+.container {
+  background-color: #141b2e;
+  margin: 20px;
+  padding: 15px;
+  display: flex;
+  align-items: var(--alignment);
+  flex-direction: column;
+  border-radius: 20px;
+}
+/* changed */
+.container .Logo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: var(--Direction);
+}
+.container .Logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 15px 0px;
+}
+/* changed */
+.container .icons {
+  width: 100%;
+  display: flex;
+  align-items: var(--alignment);
+  flex-direction: column;
+  margin: 30px 0px;
+}
+.container .icons .icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* changed */
+.container .icons .icon p {
+  font-size: 15px;
+  color: whitesmoke;
+  display: var(--Display);
+}
+.container .icons .icon i {
+  color: whitesmoke;
+  font-size: 20px;
+  margin: 5px 0px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+}
+/* changed */
+.container .btns {
+  width: 100%;
+  display: flex;
+  align-items: var(--alignment);
+  flex-direction: column;
+}
+.container .btns .icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.container .btns .icon i {
+  padding: 10px;
+  border-radius: 10px;
+  color: whitesmoke;
+  font-size: 20px;
+  margin: 10px 0px;
+  cursor: pointer;
+}
+/* changed */
+.container .btns .icon p {
+  font-size: 15px;
+  color: whitesmoke;
+  display: var(--Display);
+}
+.container .Logo button {
+  cursor: pointer;
+  font-size: 20px;
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 15px;
+  border: none;
+  width: 50px;
+  height: 50px;
+  margin: 15px 0px;
+}
+.container .icons .icon i:hover,
+.container .btns i:hover {
+  background-color: whitesmoke;
+  color: #141b2e;
+}
+@media (max-width: 700px) {
+  body {
+    align-items: flex-start;
+  }
+  .container {
+    width: 90%;
+    align-items: flex-start;
+  }
+  .container .Logo {
+    flex-direction: row;
+  }
+  .container .icons {
+    display: none;
+    align-items: flex-start;
+  }
+  .container .icons .icon p {
+    display: block;
+  }
+  .container .btns {
+    display: none;
+    align-items: flex-start;
+  }
+  .container .btns .icon p {
+    display: block;
+  }
+}

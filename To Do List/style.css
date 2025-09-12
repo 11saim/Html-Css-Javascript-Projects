@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    156deg,
+    rgba(28, 56, 124, 1) 25%,
+    rgba(55, 15, 73, 1) 100%
+  );
+}
+.main {
+  width: 500px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inner-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+.top {
+  width: 90%;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 10px;
+}
+.heading {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.heading img {
+  width: 40px;
+}
+.input {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px 0px;
+}
+input {
+  width: 75%;
+  padding: 10px 20px;
+  border-radius: 40px;
+  border: 1px solid lightgrey;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+input:focus {
+  padding-left: 20px;
+}
+button {
+  border: none;
+  border-radius: 5px;
+  color: whitesmoke;
+  background-color: #ff643b;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.bottom {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.task {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 10px 0px;
+}
+.left {
+  width: 75%;
+  display: flex;
+  align-items: center;
+}
+.task-status img {
+  width: 20px;
+  cursor: pointer;
+  margin-top: 3px;
+}
+.unchecked {
+  margin: 0px 5px;
+  width: 100%;
+  cursor: pointer;
+}
+.checked {
+  margin: 0px 5px;
+  width: 100%;
+  cursor: pointer;
+  text-decoration: line-through;
+}
+.checked h4 {
+  text-wrap: wrap;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+.unchecked h4 {
+  text-wrap: wrap;
+  letter-spacing: 1px;
+}
+@media (max-width: 425px) {
+  input {
+    width: 100%;
+  }
+  .left {
+    width: 100%;
+  }
+}
+@media (max-width: 500px) {
+  .main {
+    width: 100%;
+  }
+}
