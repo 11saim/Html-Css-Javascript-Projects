@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="script.js" type="module"></script>
+  </head>
+  <body>
+    <div class="main-content">
+      <header>
+        <a href="./index.html" class="logo">
+          <div>
+            <p class="brand-name">Tote</p>
+            <p class="brand-tag-line">Funky Printed Bags</p>
+          </div>
+        </a>
+        <button class="menu-toggler"><i class="fa-solid fa-bars"></i></button>
+        <nav>
+          <ul>
+            <i class="cross fa-solid fa-xmark"></i>
+            <li><a href="./ProductPage.html">Shop</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Gift Card</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <input type="text" name="search" id="search" placeholder="Search" />
+          <button class="login">
+            <i class="fa-solid fa-circle-user"></i>
+            Log In
+          </button>
+          <span class="cart"
+            ><i class="cart-open fa-solid fa-bag-shopping"></i
+          ></span>
+        </nav>
+      </header>
+      <div class="search-page">
+        <div class="input-area">
+          <input type="text" placeholder="Search" />
+          <a href="#" class="search-page-close-btn">Close</a>
+        </div>
+        <div class="card-area"></div>
+        <button>Show All Results</button>
+      </div>
+      <div class="cart-page">
+        <div class="head">
+          <p class="product-Quantity">Cart <span>(1 item)</span></p>
+          <i class="cart-close fa-solid fa-xmark"></i>
+        </div>
+        <div class="products">
+          <!-- <div class="product">
+            <img src="images/small-product-1.avif" alt="" />
+            <div class="details">
+              <p class="product-name">i'm a product</p>
+              <p class="product-price">$15.00</p>
+              <p class="product-color">Color: <span>Orange</span></p>
+              <div class="counter">
+                <i id="minus" class="minus fa-solid fa-minus"></i>
+                <span class="quantity">0</span>
+                <i id="plus" class="plus fa-solid fa-plus"></i>
+              </div>
+            </div>
+            <i class="fa-solid fa-trash"></i>
+            <p class="total-price">$15.00</p>
+          </div> -->
+        </div>
+        <div class="check-out">
+          <div class="head">
+            <p>Estimated total</p>
+            <p class="total-amount">$0.00</p>
+          </div>
+          <p class="notice">Taxes and shipping are calculated at checkout.</p>
+          <button class="one">Checkout</button>
+          <button class="two">View Cart</button>
+          <p class="trust-message">
+            <i class="fa-solid fa-lock"></i> Secure Checkout
+          </p>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="overlay">
+          <i class="close fa-solid fa-xmark"></i>
+          <div class="img-container">
+            <!-- <input type="radio" name="product-img" id="radio-1" checked />
+            <input type="radio" name="product-img" id="radio-2" />
+            <input type="radio" name="product-img" id="radio-3" />
+            <div class="images">
+              <img
+                id="img-1"
+                class="product-img"
+                src="images/small-product-1.avif"
+                alt="Image 1"
+              />
+              <img
+                id="img-2"
+                class="product-img"
+                src="images/mid-image-1.avif"
+                alt="Image 2"
+              />
+              <img
+                id="img-3"
+                class="product-img"
+                src="images/small-product-3.2.avif"
+                alt="Image 3"
+              />
+            </div>
+            <div class="radio-buttons">
+              <label for="radio-1"></label>
+              <label for="radio-2"></label>
+              <label for="radio-3"></label>
+            </div> -->
+          </div>
+          <div class="info">
+            <h2>I'm a Product</h2>
+            <h3>$15.00</h3>
+            <p class="product-code">SKU: 0004</p>
+            <p class="product-color">
+              Color: <span class="color-name"></span>*
+            </p>
+            <div class="colors">
+              <!-- <div class="color">
+                <div class="bg-color" style="background-color: black"></div>
+                <div class="border"></div>
+              </div> -->
+            </div>
+            <p class="quantity">Quantity*</p>
+            <div class="counter">
+              <i id="minus" class="fa-solid fa-minus"></i>
+              <p class="items-num">0</p>
+              <i id="plus" class="fa-solid fa-plus"></i>
+            </div>
+            <button class="product-add-to-cart">Add to Cart</button>
+            <a href="#">View More Details</a>
+          </div>
+        </div>
+      </div>
+      <div class="toast-container" id="toastContainer"></div>
+      <main>
+        <div class="cards">
+          <div class="card" id="1">
+            <a href="./ProductPage.html">
+              <img class="small-img" src="images/small-product-1.avif" alt="" />
+              <img class="big-img" src="images/product-1.avif" alt="" />
+            </a>
+            <p class="product-name">I'm a product</p>
+            <div class="line"></div>
+            <p class="product-price">$15.00</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+        <div id="about" class="about-section">
+          <h2>About</h2>
+          <p>
+            I'm a paragraph. Click here to add your own text and edit me. It’s
+            easy. Just click “Edit Text” or double click me to add your own
+            content and make changes to the font. I’m a great place for you to
+            tell a story and let your users know a little more about you.
+          </p>
+        </div>
+      </main>
+      <footer>
+        <div class="links">
+          <ul>
+            <li><a href="#">Shipping & Returns</a></li>
+            <li><a href="#">Store Policy</a></li>
+            <li><a href="#">Payment Methods</a></li>
+          </ul>
+          <ul>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Tel: 123-456-7890</a></li>
+            <li>
+              <a href="#" style="text-decoration: underline">info@mysite.com</a>
+            </li>
+          </ul>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Pinterest</a></li>
+          </ul>
+        </div>
+        <div class="subscribe">
+          <p class="heading">Join our mailing list and never miss an update</p>
+          <p class="title">Email*</p>
+          <input type="email" />
+          <button>Subscribe Now</button>
+          <div class="check-box">
+            <input type="checkbox" name="" id="" />
+            <p>Yes, subscribe me to your newsletter.*</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

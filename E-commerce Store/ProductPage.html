@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I'm a Product</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="ProductPage.js" type="module"></script>
+  </head>
+  <body>
+    <header>
+      <a href="./index.html" class="logo">
+        <div>
+          <p class="brand-name">Tote</p>
+          <p class="brand-tag-line">Funky Printed Bags</p>
+        </div>
+      </a>
+      <button class="menu-toggler"><i class="fa-solid fa-bars"></i></button>
+      <nav>
+        <ul>
+          <i class="cross fa-solid fa-xmark"></i>
+          <li><a href="#">Shop</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Gift Card</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <input type="text" name="search" id="search" placeholder="Search" />
+        <button class="login">
+          <i class="fa-solid fa-circle-user"></i>
+          Log In
+        </button>
+        <span class="cart"
+          ><i class="cart-open fa-solid fa-bag-shopping"></i
+        ></span>
+      </nav>
+    </header>
+    <div class="search-page">
+      <div class="input-area">
+        <input type="text" placeholder="Search" />
+        <a href="#" class="search-page-close-btn">Close</a>
+      </div>
+      <div class="card-area"></div>
+      <button>Show All Results</button>
+    </div>
+    <div class="cart-page">
+      <div class="head">
+        <p class="product-Quantity">Cart <span>(1 item)</span></p>
+        <i class="cart-close fa-solid fa-xmark"></i>
+      </div>
+      <div class="products">
+        <!-- <div class="product">
+            <img src="images/small-product-1.avif" alt="" />
+            <div class="details">
+              <p class="product-name">i'm a product</p>
+              <p class="product-price">$15.00</p>
+              <p class="product-color">Color: <span>Orange</span></p>
+              <div class="counter">
+                <i id="minus" class="minus fa-solid fa-minus"></i>
+                <span class="quantity">0</span>
+                <i id="plus" class="plus fa-solid fa-plus"></i>
+              </div>
+            </div>
+            <i class="fa-solid fa-trash"></i>
+            <p class="total-price">$15.00</p>
+          </div> -->
+      </div>
+      <div class="check-out">
+        <div class="head">
+          <p>Estimated total</p>
+          <p class="total-amount">$0.00</p>
+        </div>
+        <p class="notice">Taxes and shipping are calculated at checkout.</p>
+        <button class="one">Checkout</button>
+        <button class="two">View Cart</button>
+        <p class="trust-message">
+          <i class="fa-solid fa-lock"></i> Secure Checkout
+        </p>
+      </div>
+    </div>
+    <div class="toast-container" id="toastContainer"></div>
+    <main>
+      <div class="container">
+        <div class="links">
+          <p class="left"><a href="./index.html">Home / </a>I'm a product</p>
+          <p class="right">
+            <button class="prev">
+              <i class="fa-solid fa-less-than"></i> <span>Prev</span>
+            </button>
+            |
+            <button class="next">
+              <span>Next</span> <i class="fa-solid fa-greater-than"></i>
+            </button>
+          </p>
+        </div>
+        <div class="content" id="1">
+          <div class="left">
+            <input type="radio" name="product-img" id="radio-1" checked />
+            <input type="radio" name="product-img" id="radio-2" />
+            <div class="images img-box">
+              <img
+                id="img-1"
+                class="product-img"
+                src="images/small-product-1.avif"
+                alt="Image-1"
+              />
+              <img
+                id="img-2"
+                class="product-img"
+                src="images/mid-image-1.avif"
+                alt="Image-2"
+              />
+            </div>
+            <div class="radio-buttons small-boxes">
+              <label for="radio-1">
+                <div class="box box-1">
+                  <img
+                    src="./images/small-product-1.avif"
+                    alt=""
+                    class="small-img-1"
+                  />
+                </div>
+              </label>
+              <label for="radio-2"
+                ><div class="box box-2">
+                  <img
+                    src="./images/product-1.avif"
+                    alt=""
+                    class="small-img-2"
+                  />
+                </div>
+              </label>
+            </div>
+            <p>
+              I'm a product description. I'm a great place to add more details
+              about your product such as sizing, material, care instructions and
+              cleaning instructions.
+            </p>
+          </div>
+          <div class="info">
+            <h2>I'm a Product</h2>
+            <h3>$15.00</h3>
+            <p class="product-code">SKU: 0004</p>
+            <p class="product-color">
+              Color: <span class="color-name"></span>*
+            </p>
+            <div class="colors" id="1">
+              <div class="color" id="0">
+                <div class="bg-color" style="background-color: #6887f1"></div>
+                <div class="border"></div>
+              </div>
+            </div>
+            <p class="quantity">Quantity*</p>
+            <div class="counter">
+              <i id="minus" class="fa-solid fa-minus"></i>
+              <p class="items-num">0</p>
+              <i id="plus" class="fa-solid fa-plus"></i>
+            </div>
+            <button class="product-add-to-cart">Add to Cart</button>
+            <div class="accordians">
+              <div class="accordian accordian-1">
+                <input type="checkbox" id="accordian-1" name="accordian" />
+                <label for="accordian-1">
+                  <h3>PRODUCT INFO</h3>
+                  <div class="icons">
+                    <i id="plus" class="fa-solid fa-plus"></i>
+                  </div>
+                </label>
+                <p class="hide-content">
+                  I'm a product detail. I'm a great place to add more
+                  information about your product such as sizing, material, care
+                  and cleaning instructions. This is also a great space to write
+                  what makes this product special and how your customers can
+                  benefit from this item.
+                </p>
+              </div>
+
+              <div class="accordian accordian-2">
+                <input type="checkbox" id="accordian-2" name="accordian" />
+                <label for="accordian-2">
+                  <h3>RETURN & REFUND POLICY</h3>
+                  <div class="icons">
+                    <i id="plus" class="fa-solid fa-plus"></i>
+                  </div>
+                </label>
+                <p class="hide-content">
+                  I’m a Return and Refund policy. I’m a great place to let your
+                  customers know what to do in case they are dissatisfied with
+                  their purchase. Having a straightforward refund or exchange
+                  policy is a great way to build trust and reassure your
+                  customers that they can buy with confidence.
+                </p>
+              </div>
+
+              <div class="accordian accordian-3">
+                <input type="checkbox" id="accordian-3" name="accordian" />
+                <label for="accordian-3">
+                  <h3>PRODUCT INFO</h3>
+                  <div class="icons">
+                    <i id="plus" class="fa-solid fa-plus"></i>
+                  </div>
+                </label>
+                <p class="hide-content">
+                  I'm a shipping policy. I'm a great place to add more
+                  information about your shipping methods, packaging and cost.
+                  Providing straightforward information about your shipping
+                  policy is a great way to build trust and reassure your
+                  customers that they can buy from you with confidence.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card" id="1">
+        <a href="./ProductPage.html">
+          <img class="small-img" src="images/small-product-1.avif" alt="" />
+          <img class="big-img" src="images/product-1.avif" alt="" />
+        </a>
+        <p class="product-name">I'm a product</p>
+        <div class="line"></div>
+        <p class="product-price">$15.00</p>
+        <button>Add to Cart</button>
+      </div>
+    </main>
+    <footer>
+      <div class="links">
+        <ul>
+          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">Store Policy</a></li>
+          <li><a href="#">Payment Methods</a></li>
+        </ul>
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Tel: 123-456-7890</a></li>
+          <li>
+            <a href="#" style="text-decoration: underline">info@mysite.com</a>
+          </li>
+        </ul>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Pinterest</a></li>
+        </ul>
+      </div>
+      <div class="subscribe">
+        <p class="heading">Join our mailing list and never miss an update</p>
+        <p class="title">Email*</p>
+        <input type="email" />
+        <button>Subscribe Now</button>
+        <div class="check-box">
+          <input type="checkbox" name="" id="" />
+          <p>Yes, subscribe me to your newsletter.*</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

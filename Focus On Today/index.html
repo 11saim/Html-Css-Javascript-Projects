@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus on Today</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <h1><span>Focus on</span> Today</h1>
+    <div class="container">
+      <div class="head">
+        <p>Today</p>
+        <img src="Sun.png" alt="Sun" />
+      </div>
+      <p class="message">Raise the bar by completing your goals!</p>
+      <div class="bar">
+        <p class="task-done">
+          <span class="total-task-done">0</span> / 3 Completed
+        </p>
+        <div class="filled-area"></div>
+      </div>
+      <p class="error-message">Please set all the 3 goals!</p>
+      <div class="task-area">
+        <div class="task">
+          <i class="fa-regular fa-circle"></i>
+          <input
+            id="first"
+            type="text"
+            name="task-name"
+            id="task-name"
+            placeholder="Add new goal..."
+          />
+          <p class="task-value"></p>
+        </div>
+        <div class="task">
+          <i class="fa-regular fa-circle"></i>
+          <input
+            id="second"
+            type="text"
+            name="task-name"
+            id="task-name"
+            placeholder="Add new goal..."
+          />
+          <p class="task-value"></p>
+        </div>
+        <div class="task">
+          <i class="fa-regular fa-circle"></i>
+          <input
+            id="third"
+            type="text"
+            name="task-name"
+            id="task-name"
+            placeholder="Add new goal..."
+          />
+          <p class="task-value"></p>
+        </div>
+      </div>
+      <p class="motivational-message">"Move one step ahead, today!"</p>
+    </div>
+  </body>
+</html>
