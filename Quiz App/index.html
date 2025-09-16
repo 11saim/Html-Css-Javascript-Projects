@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" type="module"></script>
+  </head>
+  <body>
+    <div class="start-page">
+      <div class="icon">
+        <img src="./images/icon.png" alt="icon" draggable="false" />
+      </div>
+      <button class="start-btn">Start Now >>></button>
+      <div class="score">
+        <p>Highest Score: <span>20</span>/25</p>
+      </div>
+    </div>
+
+    <div class="ques-ans-page start close">
+      <div class="header">
+        <div class="icon">
+          <img src="./images/icon.png" alt="icon" />
+        </div>
+        <div class="answered-count">
+          <p></p>
+        </div>
+      </div>
+      <div class="question">
+        <p></p>
+      </div>
+      <div class="timer">
+        <p>00:<span>18</span></p>
+      </div>
+      <div class="answers">
+        <div class="ans" id="1">
+          <p></p>
+        </div>
+        <div class="ans" id="2">
+          <p></p>
+        </div>
+        <div class="ans" id="3">
+          <p></p>
+        </div>
+        <div class="ans" id="4">
+          <p></p>
+        </div>
+      </div>
+      <div class="next-btn">
+        <button class="next">Next ></button>
+      </div>
+    </div>
+
+    <div class="result-page close">
+      <div class="header">
+        <img src="./images/icon.png" alt="" />
+        <p>Result</p>
+      </div>
+      <div class="progress">
+        <div class="green"></div>
+        <div class="red"></div>
+        <div class="green-arrow">
+          <img src="./images/green-arrow.png" alt="" />
+          <p></p>
+        </div>
+        <div class="red-arrow">
+          <img src="./images/red-arrow.png" alt="" />
+          <p></p>
+        </div>
+      </div>
+      <div class="retry">
+        <p>“Keep learning, you have a good score!”</p>
+        <button><<< Retry</button>
+      </div>
+    </div>
+  </body>
+</html>
