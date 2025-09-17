@@ -19,9 +19,9 @@ const redBar = document.querySelector(".red")
 const retryBtn = document.querySelector(".retry button")
 const successRate = document.querySelector(".green-arrow p")
 const failureRate = document.querySelector(".red-arrow p")
-let highestScore = localStorage.getItem("Score") || 0;
+let highestScore = JSON.parse(localStorage.getItem("Score")) || 0;
 let isOptionSelected = false;
-let currentQues = 20;
+let currentQues = 0;
 let correctAns = 0;
 let wrongAns = 0;
 let sec = 18;
@@ -39,6 +39,7 @@ function timer() {
             wrongAns += 1;
             clearInterval(timerId);
             reset();
+            timer();
         }
         else if (sec == 12) {
             questionAnswerPage.classList.remove("start")
@@ -47,9 +48,6 @@ function timer() {
         else if (sec == 6) {
             questionAnswerPage.classList.remove("mid")
             questionAnswerPage.classList.add("end")
-        }
-        else if (sec == 0) {
-            clearInterval(timerId);
         }
     }, 1000)
 }
@@ -99,21 +97,22 @@ function reset() {
     questionAnswerPage.classList.remove("end")
     questionAnswerPage.classList.remove("mid")
     questionAnswerPage.classList.add("start")
-    timer();
 }
 
 function updateBar(correct, wrong) {
     greenBar.style.width = (correct / 25) * 100 > 0 ? (correct / 25) * 100 + "%" : "2%";
     redBar.style.width = (wrong / 25) * 100 > 0 ? (wrong / 25) * 100 + "%" : "2%";
-    successRate.innerText = (correct / 25) * 100 + "%";
-    failureRate.innerText = (wrong / 25) * 100 + "%";
-    if (highestScore < correct) {
+    successRate.innerText = Math.floor((correct / 25) * 100) + "%";
+    failureRate.innerText = Math.floor((wrong / 25) * 100) + "%";
+    highestScore = JSON.parse(localStorage.getItem("Score")) || 0;
+    if (correct > highestScore) {
         localStorage.setItem("Score", JSON.stringify(correct))
     }
 }
 
 function isHighestScore() {
-    if (highestScore != 0 && highestScore > 0) {
+    highestScore = JSON.parse(localStorage.getItem("Score")) || 0;
+    if (highestScore > 0) {
         score.style.display = 'block';
         score.innerHTML = `Highest Score: <span>${highestScore}</span>/25`;
     }
@@ -136,9 +135,10 @@ nextBtn.addEventListener("click", () => {
         resultPage.classList.remove("close")
         updateBar(correctAns, wrongAns);
     }
-    if (isOptionSelected) {
+    else if (isOptionSelected) {
         setQuestion(++currentQues);
         reset();
+        timer();
     }
 })
 
@@ -155,8 +155,10 @@ answers.forEach((answer) => {
 retryBtn.addEventListener("click", () => {
     resultPage.classList.add("close")
     startPage.classList.remove("close")
-    reset();
     currentQues = 0;
+    correctAns = 0;
+    wrongAns = 0;
+    reset();
     isHighestScore();
 })
 
