@@ -23,5 +23,40 @@
         </div>
       </nav>
     </header>
+    <section
+      class="flex justify-start items-start flex-col md:flex-row md:justify-between md:items-center px-3 sm:px-12 py-7"
+    >
+      <div
+        class="flex w-full sm:w-[450px] items-center space-x-5 px-6 py-3 rounded-[3px] shadow"
+      >
+        <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+        <input
+          class="w-full placeholder:text-gray-400 outline-0 caret-gray-400"
+          type="text"
+          placeholder="Search for a country..."
+        />
+      </div>
+      <div
+        class="relative inline-block shadow px-6 py-3 rounded-[4px] my-5 md:my-0"
+      >
+        <select
+          name="region"
+          id="region"
+          class="appearance-none bg-white pr-6 rounded-[4px] focus:outline-none"
+        >
+          <option value="Not Selected" selected>Filter by Region</option>
+          <option value="Africa">Africa</option>
+          <option value="America">America</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
+        </select>
+        <span
+          class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+        >
+          <i class="fa-solid fa-angle-down"></i>
+        </span>
+      </div>
+    </section>
   </body>
 </html>
