@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countries Api</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">
+      <nav class="flex justify-between px-3 sm:px-12 py-9 sm:py-5 items-center">
+        <p class="text-lg sm:text-2xl font-bold">Where in the world?</p>
+        <div class="sm:space-x-1 text-xs sm:text-base">
+          <i class="fa-regular fa-moon -rotate-[30deg]"></i>
+          <button class="cursor-pointer">Dark Mode</button>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <button
+        class="shadow-[0_0_0.25em_rgba(67,71,85,0.40),0_0.25em_1em_rgba(90,125,188,0.10)] py-3 px-12 m-5 sm:m-12 rounded-[6px] cursor-pointer"
+      >
+        <i class="fa-solid fa-arrow-left-long mr-2"></i> Back
+      </button>
+      <div
+        class="flex mx-3 sm:mx-12 [@media(min-width:1173px)]:space-y-0 space-y-10 space-x-0 [@media(min-width:1173px)]:space-x-10 xl:space-x-20 justify-center items-center flex-col [@media(min-width:1173px)]:flex-row"
+      >
+        <div class="w-full [@media(min-width:1173px)]:w-1/2">
+          <img
+            class="rounded-[5px] w-full"
+            src="https://flagcdn.com/w320/de.png"
+            alt="Germany Flag"
+          />
+        </div>
+        <div class="w-full [@media(min-width:1173px)]:w-1/2">
+          <h1 class="text-4xl font-bold mb-10">Belgium</h1>
+          <div
+            class="flex mb-10 space-x-0 space-y-6 font-medium sm:space-x-15 sm:space-y-0 flex-col sm:flex-row"
+          >
+            <div class="leading-[30px]">
+              <p>Native Name:<span class="font-normal"> Deutschland</span></p>
+              <p>Population:<span class="font-normal"> 11,319,557</span></p>
+              <p>Region:<span class="font-normal"> Europe</span></p>
+              <p>Sub Region:<span class="font-normal"> Western Europe</span></p>
+              <p>Capital:<span class="font-normal"> Brussels</span></p>
+            </div>
+            <div class="leading-[25px]">
+              <p>Top Level Domain:<span class="font-normal"> .be</span></p>
+              <p>Currencies:<span class="font-normal"> Euro</span></p>
+              <p>
+                Languages:<span class="font-normal">
+                  German,Deutsch,French</span
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex space-x-5 items-center flex-wrap">
+            <span class="font-medium">Border Countries:</span>
+            <div class="space-x-2 flex flex-wrap">
+              <button
+                class="my-2 shadow-[0_0_0.25em_rgba(67,71,85,0.27),0_0.25em_1em_rgba(90,125,188,0.05)] rounded-[4px] px-7 py-1 cursor-pointer"
+              >
+                France
+              </button>
+              <button
+                class="my-2 shadow-[0_0_0.25em_rgba(67,71,85,0.27),0_0.25em_1em_rgba(90,125,188,0.05)] rounded-[4px] px-7 py-1 cursor-pointer"
+              >
+                Germany
+              </button>
+              <button
+                class="my-2 shadow-[0_0_0.25em_rgba(67,71,85,0.27),0_0.25em_1em_rgba(90,125,188,0.05)] rounded-[4px] px-7 py-1 cursor-pointer"
+              >
+                Netherlands
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
