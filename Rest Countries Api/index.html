@@ -13,9 +13,11 @@
     />
     <link href="./output.css" rel="stylesheet" />
   </head>
-  <body>
+  <body class="bg-white dark:bg-[hsl(207,26%,17%)] min-h-screen">
     <header class="shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">
-      <nav class="flex justify-between px-3 sm:px-12 py-9 sm:py-5 items-center">
+      <nav
+        class="bg-white dark:bg-[hsl(209,23%,22%)] dark:text-[hsl(0,100%,100%)] flex justify-between px-3 sm:px-12 py-9 sm:py-5 items-center"
+      >
         <p class="text-lg sm:text-2xl font-bold">Where in the world?</p>
         <div class="sm:space-x-1 text-xs sm:text-base">
           <i class="fa-regular fa-moon -rotate-[30deg]"></i>
@@ -25,26 +27,30 @@
     </header>
     <div>
       <section
-        class="flex justify-start items-start flex-col sm:flex-row sm:justify-between sm:items-center px-3 sm:px-12 py-7"
+        class="bg-white dark:bg-[hsl(207,26%,17%)] dark:text-[hsl(0,100%,100%)] flex justify-start items-start flex-col sm:flex-row sm:justify-between sm:items-center px-3 sm:px-12 py-7"
       >
         <div
-          class="flex w-full sm:w-[300px] md:w-[450px] items-center space-x-5 px-6 py-3 rounded-[3px] shadow mb-7 sm:mb-0"
+          class="dark:bg-[hsl(209,23%,22%)] flex w-full sm:w-[300px] md:w-[450px] items-center space-x-5 px-6 py-3 rounded-[3px] shadow mb-7 sm:mb-0"
         >
-          <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+          <i
+            class="fa-solid fa-magnifying-glass text-gray-400 dark:text-[hsl(0,100%,100%)]"
+          ></i>
           <input
-            class="w-full placeholder:text-gray-400 outline-0 caret-gray-400"
+            class="w-full dark:placeholder:text-gray-100 placeholder:text-gray-400 outline-0 caret-gray-400 dark:caret-gray-100"
             type="text"
             placeholder="Search for a country..."
           />
         </div>
         <div>
-          <div class="cursor-pointer shadow py-3 px-5 space-x-1 rounded-[5px]">
+          <div
+            class="dark:bg-[hsl(209,23%,22%)] cursor-pointer shadow py-3 px-5 space-x-1 rounded-[5px]"
+          >
             <button class="cursor-pointer">Filter By Region</button>
             <i class="fa-solid fa-angle-down cursor-pointer"></i>
           </div>
           <div class="relative mt-2 hidden">
             <ul
-              class="bg-white rounded-[5px] absolute shadow w-[177px] pl-5 space-y-2 py-3"
+              class="bg-white dark:bg-[hsl(209,23%,22%)] rounded-[5px] absolute shadow w-[177px] pl-5 space-y-2 py-3"
             >
               <li class="cursor-pointer">Asia</li>
               <li class="cursor-pointer">Africa</li>
@@ -56,7 +62,7 @@
         </div>
       </section>
       <section
-        class="px-12 grid place-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-row space-y-10"
+        class="px-12 grid justify-items-center items-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-row space-y-10"
       >
         <div class="card cursor-pointer shadow rounded-[5px] w-70">
           <img
@@ -64,7 +70,9 @@
             src="https://flagcdn.com/w320/de.png"
             alt="Germany Flag"
           />
-          <div class="details p-7">
+          <div
+            class="details p-7 bg-white dark:bg-[hsl(209,23%,22%)] dark:text-[hsl(0,100%,100%)]"
+          >
             <h1 class="font-bold text-2xl">Germany</h1>
             <div class="content my-4 font-medium leading-[25px]">
               <p>Population: <span class="font-normal">81,770,900</span></p>
