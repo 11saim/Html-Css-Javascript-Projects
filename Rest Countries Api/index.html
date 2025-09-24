@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,13 +13,13 @@
     />
     <link href="./output.css" rel="stylesheet" />
   </head>
-  <body class="bg-white dark:bg-[hsl(207,26%,17%)] min-h-screen">
+  <body class="min-h-screen bg-white dark:bg-[hsl(207,26%,17%)]">
     <header class="shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">
       <nav
-        class="bg-white dark:bg-[hsl(209,23%,22%)] dark:text-[hsl(0,100%,100%)] flex justify-between px-3 sm:px-12 py-9 sm:py-5 items-center"
+        class="flex items-center justify-between bg-white px-3 py-9 sm:px-12 sm:py-5 dark:bg-[hsl(209,23%,22%)] dark:text-[hsl(0,100%,100%)]"
       >
-        <p class="text-lg sm:text-2xl font-bold">Where in the world?</p>
-        <div class="sm:space-x-1 text-xs sm:text-base">
+        <p class="text-lg font-bold sm:text-2xl">Where in the world?</p>
+        <div class="text-xs sm:space-x-1 sm:text-base">
           <i class="fa-regular fa-moon -rotate-[30deg]"></i>
           <button class="cursor-pointer">Dark Mode</button>
         </div>
@@ -27,30 +27,30 @@
     </header>
     <div>
       <section
-        class="bg-white dark:bg-[hsl(207,26%,17%)] dark:text-[hsl(0,100%,100%)] flex justify-start items-start flex-col sm:flex-row sm:justify-between sm:items-center px-3 sm:px-12 py-7"
+        class="flex flex-col items-start justify-start bg-white px-3 py-7 sm:flex-row sm:items-center sm:justify-between sm:px-12 dark:bg-[hsl(207,26%,17%)] dark:text-[hsl(0,100%,100%)]"
       >
         <div
-          class="dark:bg-[hsl(209,23%,22%)] flex w-full sm:w-[300px] md:w-[450px] items-center space-x-5 px-6 py-3 rounded-[3px] shadow mb-7 sm:mb-0"
+          class="mb-7 flex w-full items-center space-x-5 rounded-[3px] px-6 py-3 shadow sm:mb-0 sm:w-[300px] md:w-[450px] dark:bg-[hsl(209,23%,22%)]"
         >
           <i
             class="fa-solid fa-magnifying-glass text-gray-400 dark:text-[hsl(0,100%,100%)]"
           ></i>
           <input
-            class="w-full dark:placeholder:text-gray-100 placeholder:text-gray-400 outline-0 caret-gray-400 dark:caret-gray-100"
+            class="w-full caret-gray-400 outline-0 placeholder:text-gray-400 dark:caret-gray-100 dark:placeholder:text-gray-100"
             type="text"
             placeholder="Search for a country..."
           />
         </div>
         <div>
           <div
-            class="dark:bg-[hsl(209,23%,22%)] cursor-pointer shadow py-3 px-5 space-x-1 rounded-[5px]"
+            class="cursor-pointer space-x-1 rounded-[5px] px-5 py-3 shadow dark:bg-[hsl(209,23%,22%)]"
           >
             <button class="cursor-pointer">Filter By Region</button>
             <i class="fa-solid fa-angle-down cursor-pointer"></i>
           </div>
           <div class="relative mt-2 hidden">
             <ul
-              class="bg-white dark:bg-[hsl(209,23%,22%)] rounded-[5px] absolute shadow w-[177px] pl-5 space-y-2 py-3"
+              class="absolute w-[177px] space-y-2 rounded-[5px] bg-white py-3 pl-5 shadow dark:bg-[hsl(209,23%,22%)]"
             >
               <li class="cursor-pointer">Asia</li>
               <li class="cursor-pointer">Africa</li>
@@ -62,19 +62,19 @@
         </div>
       </section>
       <section
-        class="px-12 grid justify-items-center items-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-row space-y-10"
+        class="grid grid-flow-row grid-cols-1 items-start justify-items-center space-y-10 px-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
       >
-        <div class="card cursor-pointer shadow rounded-[5px] w-70">
+        <div class="card w-70 cursor-pointer rounded-[5px] shadow">
           <img
-            class="rounded-tr-[5px] rounded-tl-[5px]"
+            class="rounded-tl-[5px] rounded-tr-[5px]"
             src="https://flagcdn.com/w320/de.png"
             alt="Germany Flag"
           />
           <div
-            class="details p-7 bg-white dark:bg-[hsl(209,23%,22%)] dark:text-[hsl(0,100%,100%)]"
+            class="details bg-white p-7 dark:bg-[hsl(209,23%,22%)] dark:text-[hsl(0,100%,100%)]"
           >
-            <h1 class="font-bold text-2xl">Germany</h1>
-            <div class="content my-4 font-medium leading-[25px]">
+            <h1 class="text-2xl font-bold">Germany</h1>
+            <div class="content my-4 leading-[25px] font-medium">
               <p>Population: <span class="font-normal">81,770,900</span></p>
               <p>Region: <span class="font-normal">Europe</span></p>
               <p>Capital: <span class="font-normal">Berlin</span></p>
