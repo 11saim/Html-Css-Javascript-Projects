@@ -12,6 +12,7 @@
       referrerpolicy="no-referrer"
     />
     <link href="./output.css" rel="stylesheet" />
+    <script src="./script.js" defer></script>
   </head>
   <body class="min-h-screen bg-white dark:bg-[hsl(207,26%,17%)]">
     <header class="shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">
@@ -19,7 +20,7 @@
         class="flex items-center justify-between bg-white px-3 py-9 sm:px-12 sm:py-5 dark:bg-[hsl(209,23%,22%)] dark:text-[hsl(0,100%,100%)]"
       >
         <p class="text-lg font-bold sm:text-2xl">Where in the world?</p>
-        <div class="text-xs sm:space-x-1 sm:text-base">
+        <div class="toggler text-xs sm:space-x-1 sm:text-base">
           <i class="fa-regular fa-moon -rotate-[30deg]"></i>
           <button class="cursor-pointer">Dark Mode</button>
         </div>
@@ -62,18 +63,20 @@
         </div>
       </section>
       <section
-        class="grid grid-flow-row grid-cols-1 items-start justify-items-center space-y-10 px-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        class="card-area grid grid-flow-row grid-cols-1 items-start justify-items-center space-y-10 px-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
       >
-        <div class="card w-70 cursor-pointer rounded-[5px] shadow">
+        <div
+          class="card hidden cursor-pointer rounded-[5px] shadow not-first-of-type:w-70"
+        >
           <img
-            class="rounded-tl-[5px] rounded-tr-[5px]"
+            class="h-40 w-full rounded-tl-[5px] rounded-tr-[5px]"
             src="https://flagcdn.com/w320/de.png"
             alt="Germany Flag"
           />
           <div
             class="details bg-white p-7 dark:bg-[hsl(209,23%,22%)] dark:text-[hsl(0,100%,100%)]"
           >
-            <h1 class="text-2xl font-bold">Germany</h1>
+            <h1 class="truncate text-2xl font-bold">Germany</h1>
             <div class="content my-4 leading-[25px] font-medium">
               <p>Population: <span class="font-normal">81,770,900</span></p>
               <p>Region: <span class="font-normal">Europe</span></p>
