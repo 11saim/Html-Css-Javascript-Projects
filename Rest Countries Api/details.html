@@ -12,14 +12,20 @@
       referrerpolicy="no-referrer"
     />
     <link href="./output.css" rel="stylesheet" />
+    <script src="./common.js" defer></script>
+    <script src="./details.js" defer></script>
   </head>
-  <body>
+  <body class="min-h-screen bg-white dark:bg-[hsl(207,26%,17%)]">
     <header class="shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">
-      <nav class="flex items-center justify-between px-3 py-9 sm:px-12 sm:py-5">
+      <nav
+        class="flex items-center justify-between bg-white px-3 py-9 sm:px-12 sm:py-5 dark:bg-[hsl(209,23%,22%)] dark:text-[hsl(0,100%,100%)]"
+      >
         <p class="text-lg font-bold sm:text-2xl">Where in the world?</p>
-        <div class="text-xs sm:space-x-1 sm:text-base">
-          <i class="fa-regular fa-moon -rotate-[30deg]"></i>
-          <button class="cursor-pointer">Dark Mode</button>
+        <div
+          class="toggler flex items-center space-x-[3px] text-xs sm:space-x-[6px] sm:text-base"
+        >
+          <div></div>
+          <button class="cursor-pointer"></button>
         </div>
       </nav>
     </header>

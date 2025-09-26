@@ -12,7 +12,8 @@
       referrerpolicy="no-referrer"
     />
     <link href="./output.css" rel="stylesheet" />
-    <script src="./script.js" defer></script>
+    <script src="./common.js" defer></script>
+    <script src="./index.js" defer></script>
   </head>
   <body class="min-h-screen bg-white dark:bg-[hsl(207,26%,17%)]">
     <header class="shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">
@@ -20,9 +21,11 @@
         class="flex items-center justify-between bg-white px-3 py-9 sm:px-12 sm:py-5 dark:bg-[hsl(209,23%,22%)] dark:text-[hsl(0,100%,100%)]"
       >
         <p class="text-lg font-bold sm:text-2xl">Where in the world?</p>
-        <div class="toggler text-xs sm:space-x-1 sm:text-base">
-          <i class="fa-regular fa-moon -rotate-[30deg]"></i>
-          <button class="cursor-pointer">Dark Mode</button>
+        <div
+          class="toggler flex items-center space-x-[3px] text-xs sm:space-x-[6px] sm:text-base"
+        >
+          <div></div>
+          <button class="cursor-pointer"></button>
         </div>
       </nav>
     </header>
@@ -42,16 +45,18 @@
             placeholder="Search for a country..."
           />
         </div>
-        <div>
+        <div class="filter">
           <div
-            class="cursor-pointer space-x-1 rounded-[5px] px-5 py-3 shadow dark:bg-[hsl(209,23%,22%)]"
+            class="selected cursor-pointer space-x-1 rounded-[5px] px-5 py-3 shadow dark:bg-[hsl(209,23%,22%)]"
           >
             <button class="cursor-pointer">Filter By Region</button>
             <i class="fa-solid fa-angle-down cursor-pointer"></i>
           </div>
-          <div class="relative mt-2 hidden">
+          <div
+            class="options relative origin-top scale-y-0 opacity-0 transition-all duration-300 ease-in-out"
+          >
             <ul
-              class="absolute w-[177px] space-y-2 rounded-[5px] bg-white py-3 pl-5 shadow dark:bg-[hsl(209,23%,22%)]"
+              class="absolute mt-2 w-[177px] space-y-2 rounded-[5px] bg-white py-3 pl-5 shadow dark:bg-[hsl(209,23%,22%)]"
             >
               <li class="cursor-pointer">Asia</li>
               <li class="cursor-pointer">Africa</li>
