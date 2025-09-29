@@ -1,59 +1,60 @@
-const max = 20
+// Variables 
 let curr = 1;
+const max = 16
+
+// DOM
 const previousBtn = document.querySelector(".previous")
 const nextBtn = document.querySelector(".next")
 const pages = document.querySelectorAll("p")
-let forLast = 0;
 
+// Functions
+function updateChanges(first, second) {
+    pages[first].classList.remove("bg-sky-500")
+    pages[first].classList.remove("text-white")
+    pages[first].classList.add("hover:bg-sky-500")
+    pages[first].classList.add("hover:text-white")
+    pages[second].classList.add("bg-sky-500")
+    pages[second].classList.add("text-white")
+}
 
+function updatePageNumber(pageNumber) {
+    pages[1].innerText = "...";
+    pages[3].innerText = "...";
+    pages[1].classList.remove("hover:bg-sky-500")
+    pages[1].classList.remove("hover:text-white")
+    pages[3].classList.remove("hover:bg-sky-500")
+    pages[3].classList.remove("hover:text-white")
+    pages[4].innerText = max;
+    pages[2].innerText = pageNumber;
+}
+
+// Event Listeners
+// Previous Button Logic
 previousBtn.addEventListener("click", () => {
     if (curr > 1) {
         curr -= 1;
         if (curr < 3) {
-            // pages[curr - 1].classList.add("bg-sky-500")
-            // pages[curr - 1].classList.add("text-white")
-            // pages[curr].classList.remove("bg-sky-500")
-            // pages[curr].classList.remove("text-white")
-            // pages[curr].classList.add("hover:bg-sky-500")
-            // pages[curr].classList.add("hover:text-white")
-            console.log(curr % 5);
-            console.log((curr % 5) - 1);
-        } else if (curr > 17) {
-            // pages[4 - forLast].classList.remove("bg-sky-500")
-            // pages[4 - forLast].classList.remove("text-white")
-            // pages[4 - forLast].classList.add("hover:bg-sky-500")
-            // pages[4 - forLast].classList.add("hover:text-white")
-            // pages[4 - forLast].classList.add("bg-sky-500")
-            // pages[4 - forLast].classList.add("text-white")
-            // forLast -= 1;
-            console.log(curr % 5);
-            console.log((curr % 5) - 1);
+            updateChanges(curr % 5, (curr % 5) - 1);
+            pages[1].innerText = 2;
+        } else if (curr > max - 3) {
+            updateChanges(curr % 5, (curr % 5) - 1);
+        } else {
+            updatePageNumber(curr);
         }
     }
 })
 
-
+// Next Button Logic
 nextBtn.addEventListener("click", () => {
-    if (curr < 20) {
-        if (curr > 17) {
-            // pages[2 + forLast].classList.remove("bg-sky-500")
-            // pages[2 + forLast].classList.remove("text-white")
-            // pages[2 + forLast].classList.add("hover:bg-sky-500")
-            // pages[2 + forLast].classList.add("hover:text-white")
-            // pages[3 + forLast].classList.add("bg-sky-500")
-            // pages[3 + forLast].classList.add("text-white")
-            console.log((curr % 5) - 1);
-            console.log(curr % 5);
-            forLast += 1
+    if (curr < max) {
+        if (curr > max - 3) {
+            updateChanges((curr % 5) - 1, curr % 5)
+            pages[3].innerText = max - 1;
         } else if (curr < 3) {
-            // pages[curr - 1].classList.remove("bg-sky-500")
-            // pages[curr - 1].classList.remove("text-white")
-            // pages[curr - 1].classList.add("hover:bg-sky-500")
-            // pages[curr - 1].classList.add("hover:text-white")
-            // pages[curr].classList.add("bg-sky-500")
-            // pages[curr].classList.add("text-white")
-            console.log((curr % 5) - 1);
-            console.log(curr % 5);
+            updateChanges((curr % 5) - 1, curr % 5)
+        }
+        else {
+            updatePageNumber(curr + 1)
         }
         curr += 1;
     }
