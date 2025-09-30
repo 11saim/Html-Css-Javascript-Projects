@@ -1,61 +1,60 @@
-// Variables 
-let curr = 1;
-const max = 16
-
-// DOM
-const previousBtn = document.querySelector(".previous")
+// DOM Elements
+const prevBtn = document.querySelector(".previous")
 const nextBtn = document.querySelector(".next")
-const pages = document.querySelectorAll("p")
+const pageNumContainer = document.querySelector(".Page-Num-Container")
+const pageNumElement = document.querySelector("p")
 
 // Functions
-function updateChanges(first, second) {
-    pages[first].classList.remove("bg-sky-500")
-    pages[first].classList.remove("text-white")
-    pages[first].classList.add("hover:bg-sky-500")
-    pages[first].classList.add("hover:text-white")
-    pages[second].classList.add("bg-sky-500")
-    pages[second].classList.add("text-white")
+function loadPagination(numberOfPages) {
+    let pages = numberOfPages;
+    let currPage = 1
+
+    if (pages == 1) {
+        prevBtn.classList.add("hidden")
+        nextBtn.classList.add("hidden")
+    } else if (pages > 1 && pages < 6) {
+        for (let i = 0; i < pages - 1; i++) {
+            const newPageNum = pageNumElement.cloneNode(true);
+            newPageNum.classList.remove("bg-sky-500")
+            newPageNum.classList.remove("text-white")
+            newPageNum.classList.add("hover:bg-sky-500")
+            newPageNum.classList.add("hover:text-white")
+            newPageNum.innerText = i + 2;
+            pageNumContainer.appendChild(newPageNum);
+        }
+        const pageNums = document.querySelectorAll("p");
+        prevBtn.classList.remove("hidden")
+        nextBtn.classList.remove("hidden")
+        prevBtn.addEventListener("click", () => {
+            if (currPage > 1) {
+                pageNums[currPage - 1].classList.remove("bg-sky-500")
+                pageNums[currPage - 1].classList.remove("text-white")
+                pageNums[currPage - 1].classList.add("hover:bg-sky-500")
+                pageNums[currPage - 1].classList.add("hover:text-white")
+                pageNums[currPage - 2].classList.add("bg-sky-500")
+                pageNums[currPage - 2].classList.add("text-white")
+                pageNums[currPage - 2].classList.remove("hover:bg-sky-500")
+                pageNums[currPage - 2].classList.remove("hover:text-white")
+                currPage -= 1;
+            }
+        })
+        nextBtn.addEventListener("click", () => {
+            if (currPage < pages) {
+                pageNums[currPage - 1].classList.remove("bg-sky-500")
+                pageNums[currPage - 1].classList.remove("text-white")
+                pageNums[currPage - 1].classList.add("hover:bg-sky-500")
+                pageNums[currPage - 1].classList.add("hover:text-white")
+                pageNums[currPage].classList.add("bg-sky-500")
+                pageNums[currPage].classList.add("text-white")
+                pageNums[currPage].classList.remove("hover:bg-sky-500")
+                pageNums[currPage].classList.remove("hover:text-white")
+                currPage += 1
+            }
+        })
+    } else if (pages > 5) {
+    }
 }
 
-function updatePageNumber(pageNumber) {
-    pages[1].innerText = "...";
-    pages[3].innerText = "...";
-    pages[1].classList.remove("hover:bg-sky-500")
-    pages[1].classList.remove("hover:text-white")
-    pages[3].classList.remove("hover:bg-sky-500")
-    pages[3].classList.remove("hover:text-white")
-    pages[4].innerText = max;
-    pages[2].innerText = pageNumber;
-}
 
-// Event Listeners
-// Previous Button Logic
-previousBtn.addEventListener("click", () => {
-    if (curr > 1) {
-        curr -= 1;
-        if (curr < 3) {
-            updateChanges(curr % 5, (curr % 5) - 1);
-            pages[1].innerText = 2;
-        } else if (curr > max - 3) {
-            updateChanges(curr % 5, (curr % 5) - 1);
-        } else {
-            updatePageNumber(curr);
-        }
-    }
-})
 
-// Next Button Logic
-nextBtn.addEventListener("click", () => {
-    if (curr < max) {
-        if (curr > max - 3) {
-            updateChanges((curr % 5) - 1, curr % 5)
-            pages[3].innerText = max - 1;
-        } else if (curr < 3) {
-            updateChanges((curr % 5) - 1, curr % 5)
-        }
-        else {
-            updatePageNumber(curr + 1)
-        }
-        curr += 1;
-    }
-})
+loadPagination(3);
