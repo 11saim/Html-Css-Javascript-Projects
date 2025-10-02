@@ -76,6 +76,9 @@ function loadPagination(numberOfPages) {
                     pageNums[currPage - 1].classList.add("text-white")
                     pageNums[currPage - 1].classList.remove("hover:bg-sky-500")
                     pageNums[currPage - 1].classList.remove("hover:text-white")
+                    pageNums[2].innerText = 3;
+                    pageNums[2].classList.add("hover:bg-sky-500")
+                    pageNums[2].classList.add("hover:text-white")
                 } else if (currPage == pages - 1) {
                     pageNums[4].classList.remove("bg-sky-500");
                     pageNums[4].classList.remove("text-white");
@@ -86,7 +89,8 @@ function loadPagination(numberOfPages) {
                     pageNums[3].classList.add("bg-sky-500");
                     pageNums[3].classList.add("text-white");
                 } else {
-                    // Not Completed
+                    pageNums[3].innerText = currPage;
+                    pageNums[4].innerText = currPage + 1;
                 }
             }
         })
@@ -112,6 +116,8 @@ function loadPagination(numberOfPages) {
                     pageNums[4].classList.add("text-white");
                 } else {
                     pageNums[2].innerText = "...";
+                    pageNums[2].classList.remove("hover:bg-sky-500")
+                    pageNums[2].classList.remove("hover:text-white")
                     pageNums[3].innerText = currPage + 1;
                     pageNums[4].innerText = currPage + 2;
                 }
@@ -119,6 +125,7 @@ function loadPagination(numberOfPages) {
             }
         })
     } else if (pages > 9) {
+        let forLastThreeBoxes = 0;
         for (let i = 0; i < 4; i++) {
             const newPageNum = pageNumElement.cloneNode(true);
             newPageNum.classList.remove("bg-sky-500")
@@ -144,34 +151,46 @@ function loadPagination(numberOfPages) {
                     pageNums[currPage - 1].classList.remove("hover:bg-sky-500")
                     pageNums[currPage - 1].classList.remove("hover:text-white")
                     pageNums[1].innerText = 2;
+                    pageNums[1].classList.add("hover:bg-sky-500")
+                    pageNums[1].classList.add("hover:text-white")
                 } else if (currPage > pages - 3) {
-                    pageNums[(currPage % pageNums.length)].classList.remove("bg-sky-500")
-                    pageNums[(currPage % pageNums.length)].classList.remove("text-white")
-                    pageNums[(currPage % pageNums.length)].classList.add("hover:bg-sky-500")
-                    pageNums[(currPage % pageNums.length)].classList.add("hover:text-white")
-                    pageNums[(currPage % pageNums.length) - 1].classList.add("bg-sky-500")
-                    pageNums[(currPage % pageNums.length) - 1].classList.add("text-white")
-                    pageNums[(currPage % pageNums.length) - 1].classList.remove("hover:bg-sky-500")
-                    pageNums[(currPage % pageNums.length) - 1].classList.remove("hover:text-white")
+                    forLastThreeBoxes--;
+                    pageNums[3 + forLastThreeBoxes].classList.remove("bg-sky-500")
+                    pageNums[3 + forLastThreeBoxes].classList.remove("text-white")
+                    pageNums[3 + forLastThreeBoxes].classList.add("hover:bg-sky-500")
+                    pageNums[3 + forLastThreeBoxes].classList.add("hover:text-white")
+                    pageNums[2 + forLastThreeBoxes].classList.add("bg-sky-500")
+                    pageNums[2 + forLastThreeBoxes].classList.add("text-white")
+                    pageNums[2 + forLastThreeBoxes].classList.remove("hover:bg-sky-500")
+                    pageNums[2 + forLastThreeBoxes].classList.remove("hover:text-white")
+                    // console.log(2 + forLastThreeBoxes, 3 + forLastThreeBoxes);
                 } else {
                     pageNums[1].innerText = "...";
                     pageNums[2].innerText = currPage;
                     pageNums[3].innerText = "...";
+                    pageNums[1].classList.remove("hover:bg-sky-500")
+                    pageNums[1].classList.remove("hover:text-white")
+                    pageNums[3].classList.remove("hover:bg-sky-500")
+                    pageNums[3].classList.remove("hover:text-white")
+                    pageNums[4].innerText = pages;
                 }
             }
         })
         nextBtn.addEventListener("click", () => {
             if (currPage < pages) {
                 if (currPage > pages - 3) {
-                    pageNums[(currPage % pageNums.length) - 1].classList.remove("bg-sky-500")
-                    pageNums[(currPage % pageNums.length) - 1].classList.remove("text-white")
-                    pageNums[(currPage % pageNums.length) - 1].classList.add("hover:bg-sky-500")
-                    pageNums[(currPage % pageNums.length) - 1].classList.add("hover:text-white")
-                    pageNums[(currPage % pageNums.length)].classList.add("bg-sky-500")
-                    pageNums[(currPage % pageNums.length)].classList.add("text-white")
-                    pageNums[(currPage % pageNums.length)].classList.remove("hover:bg-sky-500")
-                    pageNums[(currPage % pageNums.length)].classList.remove("hover:text-white")
+                    pageNums[2 + forLastThreeBoxes].classList.remove("bg-sky-500")
+                    pageNums[2 + forLastThreeBoxes].classList.remove("text-white")
+                    pageNums[2 + forLastThreeBoxes].classList.add("hover:bg-sky-500")
+                    pageNums[2 + forLastThreeBoxes].classList.add("hover:text-white")
+                    pageNums[3 + forLastThreeBoxes].classList.add("bg-sky-500")
+                    pageNums[3 + forLastThreeBoxes].classList.add("text-white")
+                    pageNums[3 + forLastThreeBoxes].classList.remove("hover:bg-sky-500")
+                    pageNums[3 + forLastThreeBoxes].classList.remove("hover:text-white")
                     pageNums[3].innerText = pages - 1;
+                    pageNums[3].classList.add("hover:bg-sky-500")
+                    pageNums[3].classList.add("hover:text-white")
+                    forLastThreeBoxes++;
                 } else if (currPage < 3) {
                     pageNums[(currPage % pageNums.length) - 1].classList.remove("bg-sky-500")
                     pageNums[(currPage % pageNums.length) - 1].classList.remove("text-white")
@@ -185,6 +204,11 @@ function loadPagination(numberOfPages) {
                     pageNums[1].innerText = "...";
                     pageNums[2].innerText = currPage + 1;
                     pageNums[3].innerText = "...";
+                    pageNums[1].classList.remove("hover:bg-sky-500")
+                    pageNums[1].classList.remove("hover:text-white")
+                    pageNums[3].classList.remove("hover:bg-sky-500")
+                    pageNums[3].classList.remove("hover:text-white")
+                    pageNums[4].innerText = pages;
                 }
                 currPage += 1
             }
@@ -194,4 +218,4 @@ function loadPagination(numberOfPages) {
 
 
 
-loadPagination(9);
+loadPagination(2);
