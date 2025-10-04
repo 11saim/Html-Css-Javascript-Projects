@@ -68,6 +68,20 @@ function loadPagination(numberOfPages = 1) {
                 currPage += 1
             }
         })
+        const pageNums = document.querySelectorAll("p");
+        pageNums.forEach((pageNum, index) => {
+            pageNum.addEventListener("click", () => {
+                pageNums[currPage - 1].classList.remove("bg-sky-500")
+                pageNums[currPage - 1].classList.remove("text-white")
+                pageNum.classList.add("bg-sky-500")
+                pageNum.classList.add("text-white")
+                pageNums[currPage - 1].classList.add("hover:bg-sky-500")
+                pageNums[currPage - 1].classList.add("hover:text-white")
+                pageNum.classList.remove("hover:bg-sky-500")
+                pageNum.classList.remove("hover:text-white")
+                currPage = index + 1;
+            })
+        })
     } else if (pages > 5 && pages < 10) {
         appendPageNums(4)
         const pageNums = document.querySelectorAll("p");
@@ -140,4 +154,4 @@ function loadPagination(numberOfPages = 1) {
 
 
 // Initail Function Call
-loadPagination(10);
+loadPagination(2);
