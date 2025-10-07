@@ -58,6 +58,20 @@ function changeDotToNumber(pageNumber, Number) {
     pageNums[pageNumber].classList.add("hover:text-white")
 }
 
+// Function To Remove Hover From Dots
+function removeHover(num) {
+    const pageNums = document.querySelectorAll("p")
+    pageNums[num].classList.remove("hover:bg-sky-500")
+    pageNums[num].classList.remove("hover:text-white")
+}
+
+// Function To Add Hover On Page Numbers
+function addHover(num) {
+    const pageNums = document.querySelectorAll("p")
+    pageNums[num].classList.add("hover:bg-sky-500")
+    pageNums[num].classList.add("hover:text-white")
+}
+
 // Function To Manage Pagination Operations
 function loadPagination(numberOfPages = 1) {
     let pages = numberOfPages;
@@ -84,14 +98,8 @@ function loadPagination(numberOfPages = 1) {
         const pageNums = document.querySelectorAll("p");
         pageNums.forEach((pageNum, index) => {
             pageNum.addEventListener("click", () => {
-                pageNums[currPage - 1].classList.remove("bg-sky-500")
-                pageNums[currPage - 1].classList.remove("text-white")
-                pageNum.classList.add("bg-sky-500")
-                pageNum.classList.add("text-white")
-                pageNums[currPage - 1].classList.add("hover:bg-sky-500")
-                pageNums[currPage - 1].classList.add("hover:text-white")
-                pageNum.classList.remove("hover:bg-sky-500")
-                pageNum.classList.remove("hover:text-white")
+                updateChangesForFirst(currPage - 1);
+                updateChangesForSecond(index);
                 currPage = index + 1;
             })
         })
@@ -105,8 +113,7 @@ function loadPagination(numberOfPages = 1) {
                     updateChangesForFirst(currPage)
                     updateChangesForSecond(currPage - 1)
                     pageNums[2].innerText = 3;
-                    pageNums[2].classList.add("hover:bg-sky-500")
-                    pageNums[2].classList.add("hover:text-white")
+                    addHover(2);
                 } else if (currPage == pages - 1) {
                     updateChangesForFirst(4)
                     updateChangesForSecond(3)
@@ -126,8 +133,7 @@ function loadPagination(numberOfPages = 1) {
                     updateChangesForSecond(4)
                 } else {
                     pageNums[2].innerText = "...";
-                    pageNums[2].classList.remove("hover:bg-sky-500")
-                    pageNums[2].classList.remove("hover:text-white")
+                    removeHover(2);
                     pageNums[3].innerText = currPage + 1;
                     pageNums[4].innerText = currPage + 2;
                 }
@@ -150,8 +156,7 @@ function loadPagination(numberOfPages = 1) {
                     currPage = parseInt(pageNum.innerText)
                 } else if (clickNum > 4 && clickNum < pages) {
                     pageNums[2].innerText = "...";
-                    pageNums[2].classList.remove("hover:bg-sky-500")
-                    pageNums[2].classList.remove("hover:text-white")
+                    removeHover(2);
                     pageNums[3].innerText = pageNum.innerText;
                     updateChangesForSecond(3)
                     pageNums[4].innerText = parseInt(pageNum.innerText) + 1;
@@ -159,8 +164,7 @@ function loadPagination(numberOfPages = 1) {
                         pageNums[currPage - 1].classList.remove("bg-sky-500")
                         pageNums[currPage - 1].classList.remove("text-white")
                         if (pageNums[currPage - 1].innerText != "...") {
-                            pageNums[currPage - 1].classList.add("hover:bg-sky-500")
-                            pageNums[currPage - 1].classList.add("hover:text-white")
+                            addHover(currPage - 1);
                         }
                     }
                     currPage = parseInt(pageNum.innerText) - 1
@@ -219,9 +223,65 @@ function loadPagination(numberOfPages = 1) {
                 currPage += 1
             }
         })
+        pageNums.forEach((pageNum, index) => {
+            pageNum.addEventListener("click", () => {
+                const clickNum = parseInt(pageNum.innerText)
+                if (clickNum == currPage) {
+                    return
+                }
+                if (clickNum < 4 && currPage < 4) {
+                    updateChangesForFirst(currPage - 1);
+                    updateChangesForSecond(clickNum - 1);
+                    currPage = clickNum;
+                } else if (clickNum > 3 && clickNum <= pages - 3) {
+                    updateChangesForFirst(currPage - 1);
+                    pageNums[1].innerText = "..."
+                    removeHover(1);
+                    pageNums[2].innerText = clickNum;
+                    updateChangesForSecond(2);
+                    pageNums[3].innerText = "..."
+                    removeHover(3);
+                    currPage = clickNum;
+                    pageNums[4].innerText = pages;
+                } else if (clickNum < 4 && currPage > 3) {
+                    if (currPage > pages - 3) {
+                        pageNums[3].innerText = 4;
+                        updateChangesForFirst(3)
+                        pageNums[4].innerText = 5;
+                        updateChangesForFirst(4);
+                        forLastThreeBoxes = 0;
+                    }
+                    pageNums[1].innerText = 2;
+                    updateChangesForFirst(1);
+                    pageNums[2].innerText = 3;
+                    updateChangesForFirst(2);
+                    updateChangesForSecond(clickNum - 1);
+                    currPage = clickNum;
+                }
+                else if (clickNum > pages - 3 && currPage <= pages - 3) {
+                    pageNums[2].innerText = pages - 2;
+                    updateChangesForFirst(2);
+                    pageNums[3].innerText = pages - 1;
+                    updateChangesForFirst(3);
+                    updateChangesForSecond(4);
+                    if (currPage < 4) {
+                        updateChangesForFirst(currPage - 1);
+                    }
+                    pageNums[1].innerText = "...";
+                    removeHover(1);
+                    currPage = clickNum;
+                    forLastThreeBoxes = 2;
+                } else if (clickNum > pages - 3 && currPage > pages - 3) {
+                    updateChangesForSecond(index);
+                    updateChangesForFirst(forLastThreeBoxes + 2);
+                    currPage = clickNum;
+                    forLastThreeBoxes = clickNum % (pages - 2);
+                }
+            })
+        })
     }
 }
 
 
 // Initail Function Call
-loadPagination(9);
+loadPagination(14)
