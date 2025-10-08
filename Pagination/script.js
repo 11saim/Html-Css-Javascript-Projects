@@ -2,13 +2,13 @@
 const prevBtn = document.querySelector(".previous")
 const nextBtn = document.querySelector(".next")
 const pageNumContainer = document.querySelector(".Page-Num-Container")
-const pageNumElement = document.querySelector("p")
+const pageNumElement = document.querySelector(".btn")
 
 // Functions
 
 // Function To Make Changes In Current Page Number
 function updateChangesForFirst(first) {
-    const pageNums = document.querySelectorAll("p");
+    const pageNums = document.querySelectorAll(".btn");
     pageNums[first].classList.remove("bg-sky-500")
     pageNums[first].classList.remove("text-white")
     pageNums[first].classList.add("hover:bg-sky-500")
@@ -17,7 +17,7 @@ function updateChangesForFirst(first) {
 
 // Function To Make Changes In Next Page Number
 function updateChangesForSecond(second) {
-    const pageNums = document.querySelectorAll("p");
+    const pageNums = document.querySelectorAll(".btn");
     pageNums[second].classList.add("bg-sky-500")
     pageNums[second].classList.add("text-white")
     pageNums[second].classList.remove("hover:bg-sky-500")
@@ -39,7 +39,7 @@ function appendPageNums(quantity) {
 
 // Function To Put Dots When Pages Increased
 function putDots(pageNumber, maxPage) {
-    const pageNums = document.querySelectorAll("p")
+    const pageNums = document.querySelectorAll(".btn")
     pageNums[1].innerText = "...";
     pageNums[2].innerText = pageNumber;
     pageNums[3].innerText = "...";
@@ -52,7 +52,7 @@ function putDots(pageNumber, maxPage) {
 
 // Function To Put Number Instead Of Dots When Pages Decreased
 function changeDotToNumber(pageNumber, Number) {
-    const pageNums = document.querySelectorAll("p")
+    const pageNums = document.querySelectorAll(".btn")
     pageNums[pageNumber].innerText = Number;
     pageNums[pageNumber].classList.add("hover:bg-sky-500")
     pageNums[pageNumber].classList.add("hover:text-white")
@@ -60,20 +60,20 @@ function changeDotToNumber(pageNumber, Number) {
 
 // Function To Remove Hover From Dots
 function removeHover(num) {
-    const pageNums = document.querySelectorAll("p")
+    const pageNums = document.querySelectorAll(".btn")
     pageNums[num].classList.remove("hover:bg-sky-500")
     pageNums[num].classList.remove("hover:text-white")
 }
 
 // Function To Add Hover On Page Numbers
 function addHover(num) {
-    const pageNums = document.querySelectorAll("p")
+    const pageNums = document.querySelectorAll(".btn")
     pageNums[num].classList.add("hover:bg-sky-500")
     pageNums[num].classList.add("hover:text-white")
 }
 
 // Function To Manage Pagination Operations
-function loadPagination(numberOfPages = 1) {
+export function loadPagination(numberOfPages = 1) {
     let pages = numberOfPages;
     let currPage = 1;
     if (pages < 2) {
@@ -95,7 +95,7 @@ function loadPagination(numberOfPages = 1) {
                 currPage += 1
             }
         })
-        const pageNums = document.querySelectorAll("p");
+        const pageNums = document.querySelectorAll(".btn");
         pageNums.forEach((pageNum, index) => {
             pageNum.addEventListener("click", () => {
                 updateChangesForFirst(currPage - 1);
@@ -105,7 +105,7 @@ function loadPagination(numberOfPages = 1) {
         })
     } else if (pages > 5 && pages < 10) {
         appendPageNums(4)
-        const pageNums = document.querySelectorAll("p");
+        const pageNums = document.querySelectorAll(".btn");
         prevBtn.addEventListener("click", () => {
             if (currPage > 1) {
                 currPage -= 1
@@ -190,7 +190,7 @@ function loadPagination(numberOfPages = 1) {
     } else if (pages > 9) {
         let forLastThreeBoxes = 0;
         appendPageNums(4);
-        const pageNums = document.querySelectorAll("p");
+        const pageNums = document.querySelectorAll(".btn");
         prevBtn.addEventListener("click", () => {
             if (currPage > 1) {
                 currPage -= 1;
@@ -284,4 +284,4 @@ function loadPagination(numberOfPages = 1) {
 
 
 // Initail Function Call
-loadPagination(14)
+// loadPagination(4)
