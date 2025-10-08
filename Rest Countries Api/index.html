@@ -12,8 +12,8 @@
       referrerpolicy="no-referrer"
     />
     <link href="./output.css" rel="stylesheet" />
-    <script src="./common.js" defer></script>
-    <script src="./index.js" defer></script>
+    <script src="./common.js" type="module"></script>
+    <script src="./index.js" type="module"></script>
   </head>
   <body class="min-h-screen bg-white dark:bg-[hsl(207,26%,17%)]">
     <header class="shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">
@@ -29,7 +29,7 @@
         </div>
       </nav>
     </header>
-    <div>
+    <div class="pb-20">
       <section
         class="flex flex-col items-start justify-start bg-white px-3 py-7 sm:flex-row sm:items-center sm:justify-between sm:px-12 dark:bg-[hsl(207,26%,17%)] dark:text-[hsl(0,100%,100%)]"
       >
@@ -88,6 +88,31 @@
               <p>Capital: <span class="font-normal">Berlin</span></p>
             </div>
           </div>
+        </div>
+      </section>
+      <section class="pagination px-22">
+        <div
+          class="relative flex flex-col items-end justify-start gap-3 sm:static sm:flex-row sm:items-center sm:justify-between"
+        >
+          <button
+            class="previous absolute bottom-0 left-0 cursor-pointer rounded-[5px] bg-sky-500 px-5 py-2 text-white sm:static md:px-8 md:py-3 dark:bg-[hsl(209,23%,22%)] dark:text-[hsl(0,100%,100%)]"
+          >
+            Previous
+          </button>
+          <div
+            class="Page-Num-Container mx-2 flex flex-1 flex-wrap justify-center space-x-2 md:mx-10 md:space-x-5"
+          >
+            <button
+              class="btn rounded-[5px] bg-sky-500 px-4 py-2 text-white dark:bg-[hsl(209,23%,22%)] dark:text-[hsl(0,100%,100%)]"
+            >
+              1
+            </button>
+          </div>
+          <button
+            class="next cursor-pointer rounded-[5px] bg-sky-500 px-5 py-2 text-white md:px-8 md:py-3 dark:bg-[hsl(209,23%,22%)] dark:text-[hsl(0,100%,100%)]"
+          >
+            Next
+          </button>
         </div>
       </section>
     </div>

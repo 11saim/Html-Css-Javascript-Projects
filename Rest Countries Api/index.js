@@ -1,3 +1,5 @@
+import { loadPagination } from "../Pagination/script.js";
+
 // Local Variables
 const cardArea = document.querySelector(".card-area")
 const card = document.querySelector(".card")
@@ -38,3 +40,7 @@ function displayCards() {
         cardArea.appendChild(newCard);
     }
 }
+
+
+
+loadPagination(15);
