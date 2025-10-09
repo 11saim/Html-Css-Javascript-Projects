@@ -4,34 +4,37 @@ const nextBtn = document.querySelector(".next")
 const pageNumContainer = document.querySelector(".Page-Num-Container")
 const pageNumElement = document.querySelector(".btn")
 
+// Local Variables
+export let currPage = 1;
+
 // Functions
 
 // Function To Make Changes In Current Page Number
 function updateChangesForFirst(first) {
     const pageNums = document.querySelectorAll(".btn");
-    pageNums[first].classList.remove("bg-sky-500")
-    pageNums[first].classList.remove("text-white")
-    pageNums[first].classList.add("hover:bg-sky-500")
-    pageNums[first].classList.add("hover:text-white")
+    pageNums[first].classList.remove("shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]")
+    pageNums[first].classList.remove("dark:bg-[hsl(209,23%,22%)]")
+    pageNums[first].classList.add("hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]")
+    pageNums[first].classList.add("dark:hover:bg-[hsl(209,23%,22%)]")
 }
 
 // Function To Make Changes In Next Page Number
 function updateChangesForSecond(second) {
     const pageNums = document.querySelectorAll(".btn");
-    pageNums[second].classList.add("bg-sky-500")
-    pageNums[second].classList.add("text-white")
-    pageNums[second].classList.remove("hover:bg-sky-500")
-    pageNums[second].classList.remove("hover:text-white")
+    pageNums[second].classList.add("shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]")
+    pageNums[second].classList.add("dark:bg-[hsl(209,23%,22%)]")
+    pageNums[second].classList.remove("hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]")
+    pageNums[second].classList.remove("dark:hover:bg-[hsl(209,23%,22%)]")
 }
 
 // Function To Append Page Numbers 
 function appendPageNums(quantity) {
     for (let i = 0; i < quantity; i++) {
         const newPageNum = pageNumElement.cloneNode(true);
-        newPageNum.classList.remove("bg-sky-500")
-        newPageNum.classList.remove("text-white")
-        newPageNum.classList.add("hover:bg-sky-500")
-        newPageNum.classList.add("hover:text-white")
+        newPageNum.classList.remove("shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]")
+        newPageNum.classList.remove("dark:bg-[hsl(209,23%,22%)]")
+        newPageNum.classList.add("hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]")
+        newPageNum.classList.add("dark:hover:bg-[hsl(209,23%,22%)]")
         newPageNum.innerText = i + 2;
         pageNumContainer.appendChild(newPageNum);
     }
@@ -43,10 +46,10 @@ function putDots(pageNumber, maxPage) {
     pageNums[1].innerText = "...";
     pageNums[2].innerText = pageNumber;
     pageNums[3].innerText = "...";
-    pageNums[1].classList.remove("hover:bg-sky-500")
-    pageNums[1].classList.remove("hover:text-white")
-    pageNums[3].classList.remove("hover:bg-sky-500")
-    pageNums[3].classList.remove("hover:text-white")
+    pageNums[1].classList.remove("hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]")
+    pageNums[1].classList.remove("dark:hover:bg-[hsl(209,23%,22%)]")
+    pageNums[3].classList.remove("hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]")
+    pageNums[3].classList.remove("dark:hover:bg-[hsl(209,23%,22%)]")
     pageNums[4].innerText = maxPage;
 }
 
@@ -54,28 +57,27 @@ function putDots(pageNumber, maxPage) {
 function changeDotToNumber(pageNumber, Number) {
     const pageNums = document.querySelectorAll(".btn")
     pageNums[pageNumber].innerText = Number;
-    pageNums[pageNumber].classList.add("hover:bg-sky-500")
-    pageNums[pageNumber].classList.add("hover:text-white")
+    pageNums[pageNumber].classList.add("hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]")
+    pageNums[pageNumber].classList.add("dark:hover:bg-[hsl(209,23%,22%)]")
 }
 
 // Function To Remove Hover From Dots
 function removeHover(num) {
     const pageNums = document.querySelectorAll(".btn")
-    pageNums[num].classList.remove("hover:bg-sky-500")
-    pageNums[num].classList.remove("hover:text-white")
+    pageNums[num].classList.remove("hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]")
+    pageNums[num].classList.remove("dark:hover:bg-[hsl(209,23%,22%)]")
 }
 
 // Function To Add Hover On Page Numbers
 function addHover(num) {
     const pageNums = document.querySelectorAll(".btn")
-    pageNums[num].classList.add("hover:bg-sky-500")
-    pageNums[num].classList.add("hover:text-white")
+    pageNums[num].classList.add("dark:hover:bg-[hsl(209,23%,22%)]")
+    pageNums[num].classList.add("hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]")
 }
 
 // Function To Manage Pagination Operations
 export function loadPagination(numberOfPages = 1) {
     let pages = numberOfPages;
-    let currPage = 1;
     if (pages < 2) {
         prevBtn.classList.add("hidden")
         nextBtn.classList.add("hidden")
@@ -284,4 +286,4 @@ export function loadPagination(numberOfPages = 1) {
 
 
 // Initail Function Call
-// loadPagination(4)
+// loadPagination(16)
