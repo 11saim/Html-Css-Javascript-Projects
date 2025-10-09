@@ -1,10 +1,10 @@
+// Importing Pagination Function
 import { loadPagination } from "../Pagination/script.js";
 
 // Local Variables
 const cardArea = document.querySelector(".card-area")
 const card = document.querySelector(".card")
 const filter = document.querySelector(".filter .selected")
-let currentDisplayedCards = 1;
 let data = null;
 
 
@@ -19,7 +19,7 @@ async function loadData() {
 // Calling async Function
 loadData();
 
-// Filter Option Toggler
+// Toggler For Filter Option
 filter.addEventListener("click", () => {
     document.querySelector(".options").classList.toggle("scale-y-0");
     document.querySelector(".options").classList.toggle("opacity-0");
@@ -42,5 +42,18 @@ function displayCards() {
 }
 
 
+// Initial Call To Load Pagination
+loadPagination(16);
 
-loadPagination(15);
+// Importing Variable To Have Access To Current Page
+import { currPage } from "../Pagination/script.js";
+
+// Pagination Area Variable
+const Pagination = document.querySelector(".pagination")
+
+// Initializing Observer For Pagination 
+const observer = new MutationObserver((mutations) => { console.log("Current Page: ", currPage) });
+
+// Applying Observer On Pagination So Page Change Can Be Detected
+observer.observe(Pagination, { childList: true, subtree: true, characterData: true, attributes: true });
+
