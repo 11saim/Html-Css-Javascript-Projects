@@ -34,7 +34,7 @@ function displayCards() {
         newCard.classList.remove("hidden")
         newCard.querySelector("img").src = data[i]['flags']['png']
         newCard.querySelector("h1").innerText = data[i]['name'];
-        newCard.querySelectorAll('p')[0].querySelector('span').innerText = data[i]['population']
+        newCard.querySelectorAll('p')[0].querySelector('span').innerText = data[i]['population'].toLocaleString()
         newCard.querySelectorAll('p')[1].querySelector('span').innerText = data[i]['region']
         newCard.querySelectorAll('p')[2].querySelector('span').innerText = data[i]['capital']
         cardArea.appendChild(newCard);
