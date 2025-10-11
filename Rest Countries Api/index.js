@@ -13,7 +13,7 @@ async function loadData() {
     const res = await fetch("./data.json");
     const countries = await res.json();
     data = countries
-    displayCards()
+    displayCards(0, 16)
 }
 
 // Calling async Function
@@ -28,8 +28,9 @@ filter.addEventListener("click", () => {
 })
 
 // Function To Display Cards
-function displayCards() {
-    for (let i = 0; i < 12; i++) {
+function displayCards(start, end) {
+    cardArea.innerHTML = "";
+    for (let i = start; i < end; i++) {
         let newCard = card.cloneNode(true);
         newCard.classList.remove("hidden")
         newCard.querySelector("img").src = data[i]['flags']['png']
@@ -41,6 +42,14 @@ function displayCards() {
     }
 }
 
+// Calculation For Displaying Card According To Page Number
+function calcCardRange(pageNum) {
+    if (pageNum * 16 < 250) {
+        displayCards((pageNum * 16) - 16, pageNum * 16);
+    } else {
+        displayCards((pageNum * 16) - 16, (pageNum * 16) - 6);
+    }
+}
 
 // Initial Call To Load Pagination
 loadPagination(16);
@@ -52,7 +61,10 @@ import { currPage } from "../Pagination/script.js";
 const Pagination = document.querySelector(".pagination")
 
 // Initializing Observer For Pagination 
-const observer = new MutationObserver((mutations) => { console.log("Current Page: ", currPage) });
+const observer = new MutationObserver((mutations) => {
+    calcCardRange(currPage)
+    window.scrollTo({ top: 0, behavior: "smooth" })
+});
 
 // Applying Observer On Pagination So Page Change Can Be Detected
 observer.observe(Pagination, { childList: true, subtree: true, characterData: true, attributes: true });
