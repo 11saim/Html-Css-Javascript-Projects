@@ -6,6 +6,9 @@ const cardArea = document.querySelector(".card-area")
 const card = document.querySelector(".card")
 const filter = document.querySelector(".filter .selected")
 const input = document.querySelector("input")
+const regions = document.querySelectorAll(".options ul li")
+const filterText = filter.querySelector("button")
+const filterOptions = document.querySelector(".options");
 let data = null;
 
 
@@ -22,10 +25,7 @@ loadData();
 
 // Toggler For Filter Option
 filter.addEventListener("click", () => {
-    document.querySelector(".options").classList.toggle("scale-y-0");
-    document.querySelector(".options").classList.toggle("opacity-0");
-    document.querySelector(".options").classList.toggle("scale-y-100");
-    document.querySelector(".options").classList.toggle("opacity-100");
+    addTransition();
 })
 
 // Funcion To Create Card
@@ -38,6 +38,14 @@ function createCard(i) {
     newCard.querySelectorAll('p')[1].querySelector('span').innerText = data[i]['region']
     newCard.querySelectorAll('p')[2].querySelector('span').innerText = data[i]['capital']
     cardArea.appendChild(newCard);
+}
+
+// Function To Add Transition In Filter Options
+function addTransition() {
+    filterOptions.classList.toggle("scale-y-0");
+    filterOptions.classList.toggle("scale-y-100");
+    filterOptions.classList.toggle("opacity-0");
+    filterOptions.classList.toggle("opacity-100");
 }
 
 // Function To Display Cards
@@ -100,7 +108,42 @@ function inputHandler(e) {
             }
         }
     }
+    filterText.innerText = "Filter By Region";
 }
 
 // Event Listener For Search Input
 input.addEventListener("input", debounce(inputHandler, 400))
+
+
+regions.forEach((region) => {
+    region.addEventListener("click", () => {
+        if (filterText.innerText != region.innerText) {
+            filterText.innerText = region.innerText
+            addTransition();
+            Pagination.parentElement.style.display = "none";
+            cardArea.innerHTML = "";
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].region == filterText.innerText) {
+                    createCard(i);
+                }
+            }
+        } else {
+            filterText.innerText = "Filter By Region";
+            addTransition();
+            Pagination.parentElement.style.display = "flex";
+            calcCardRange(currPage);
+        }
+        input.value = "";
+    })
+})
+
+
+const filterMenu = document.querySelector(".filter");
+
+document.addEventListener("click", (e) => {
+    if (!filterMenu.contains(e.target)) {
+        if (filterOptions.classList.contains("scale-y-100")) {
+            addTransition();
+        }
+    }
+});
