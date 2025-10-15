@@ -37,6 +37,7 @@ function createCard(i) {
     newCard.querySelectorAll('p')[0].querySelector('span').innerText = data[i]['population'].toLocaleString()
     newCard.querySelectorAll('p')[1].querySelector('span').innerText = data[i]['region']
     newCard.querySelectorAll('p')[2].querySelector('span').innerText = data[i]['capital']
+    newCard.setAttribute('href', `./details.html?name=${data[i]['name']}`)
     cardArea.appendChild(newCard);
 }
 

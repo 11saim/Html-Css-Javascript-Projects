@@ -12,8 +12,8 @@
       referrerpolicy="no-referrer"
     />
     <link href="./output.css" rel="stylesheet" />
-    <script src="./common.js" defer></script>
-    <script src="./details.js" defer></script>
+    <script src="./common.js" type="module"></script>
+    <script src="./details.js" type="module"></script>
   </head>
   <body class="min-h-screen bg-white dark:bg-[hsl(207,26%,17%)]">
     <header class="shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">
@@ -36,9 +36,9 @@
         <i class="fa-solid fa-arrow-left-long mr-2"></i> Back
       </button>
       <div
-        class="mx-5 flex flex-col items-center justify-center space-y-10 space-x-0 sm:mx-12 xl:space-x-20 [@media(min-width:1173px)]:flex-row [@media(min-width:1173px)]:space-y-0 [@media(min-width:1173px)]:space-x-10"
+        class="detail-Area mx-5 flex flex-col items-center justify-center space-y-10 space-x-0 sm:mx-12 xl:space-x-20 [@media(min-width:1173px)]:flex-row [@media(min-width:1173px)]:space-y-0 [@media(min-width:1173px)]:space-x-10"
       >
-        <div class="w-full [@media(min-width:1173px)]:w-1/2">
+        <!-- <div class="w-full [@media(min-width:1173px)]:w-1/2">
           <img
             class="w-full rounded-[5px]"
             src="https://flagcdn.com/w320/de.png"
@@ -89,7 +89,7 @@
               </button>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
   </body>
