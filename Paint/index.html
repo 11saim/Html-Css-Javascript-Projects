@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paint</title>
+    <link rel="stylesheet" href="output.css" />
+  </head>
+  <body class="bg-blue-400 flex justify-center items-center min-h-screen">
+    <div class="container w-[70%] flex justify-center items-center space-x-5">
+      <div
+        class="side-bar space-y-3 rounded-md side-bar w-[20%] bg-white h-[500px] p-3"
+      >
+        <div class="shapes space-y-1">
+          <p class="font-bold">Shapes</p>
+          <div class="box flex justify-start items-center space-x-2 ml-2">
+            <img class="w-4" src="./images/box.png" alt="Rectangle" />
+            <p class="cursor-pointer">Box</p>
+          </div>
+          <div class="triangle flex justify-start items-center space-x-2 ml-2">
+            <img class="w-4" src="./images/triangle.png" alt="Triangle" />
+            <p class="cursor-pointer">Triangle</p>
+          </div>
+          <div class="circle flex justify-start items-center space-x-2 ml-2">
+            <img class="w-4" src="./images/circle.png" alt="Circle" srcset="" />
+            <p class="cursor-pointer">Cirlce</p>
+          </div>
+        </div>
+        <div class="options space-y-1">
+          <p class="font-bold">Options</p>
+          <div class="brush flex justify-start items-center space-x-2 ml-2">
+            <img class="w-4" src="./images/brush.png" alt="Brush" />
+            <p class="cursor-pointer">Brush</p>
+          </div>
+          <div class="eraser flex justify-start items-center space-x-2 ml-2">
+            <img class="w-4" src="./images/eraser.png" alt="Eraser" />
+            <p class="cursor-pointer">Eraser</p>
+          </div>
+          <div
+            class="fill-color flex justify-start items-center space-x-2 ml-2"
+          >
+            <img class="w-4" src="./images/box.png" alt="Box" />
+            <p class="cursor-pointer">Fill Color</p>
+          </div>
+        </div>
+        <div class="size space-y-1">
+          <p class="font-bold">Size</p>
+          <input class="w-full" type="range" min="1" max="100" value="50" />
+        </div>
+        <div class="colors space-y-1">
+          <p class="font-bold">Colors</p>
+          <div
+            class="colors-collection flex justify-start items-center space-x-1 ml-2"
+          >
+            <div
+              class="color white cursor-pointer bg-white border-black border w-4 h-4 rounded-full"
+            ></div>
+            <div
+              class="color red cursor-pointer bg-red-600 border-black border w-4 h-4 rounded-full"
+            ></div>
+            <div
+              class="color blue cursor-pointer bg-blue-600 border-black border w-4 h-4 rounded-full"
+            ></div>
+            <div
+              class="color green cursor-pointer bg-green-600 border-black border w-4 h-4 rounded-full"
+            ></div>
+            <div
+              class="color yellow cursor-pointer bg-yellow-500 border-black border w-4 h-4 rounded-full"
+            ></div>
+          </div>
+        </div>
+        <div class="btns space-y-1">
+          <div class="clear-save flex justify-center items-center space-x-1">
+            <button
+              class="clear-canvas cursor-pointer border border-black w-30 h-10 text-[14px]"
+            >
+              Clear Canvas
+            </button>
+            <button
+              class="save-img cursor-pointer w-30 h-10 bg-blue-400 text-white text-[12px]"
+            >
+              Save As Image
+            </button>
+          </div>
+          <div
+            class="undo-redo space-x-1 flex justify-center items-center space-x-1"
+          >
+            <button
+              class="undo cursor-pointer w-30 h-10 bg-blue-400 text-white"
+            >
+              Undo
+            </button>
+            <button class="Redo cursor-pointer border border-black w-30 h-10">
+              Redo
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="canvas w-[70%]">
+        <canvas class="rounded-md board bg-white h-[500px] w-full"></canvas>
+      </div>
+    </div>
+  </body>
+</html>
