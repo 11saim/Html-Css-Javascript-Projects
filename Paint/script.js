@@ -2,6 +2,7 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const shapes = document.querySelectorAll(".shapes p");
 const fillColor = document.querySelector(".fill-color");
+const colors = document.querySelectorAll(".colors-collection .color");
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 
@@ -10,6 +11,7 @@ let isDrawing = false;
 let snapshot;
 let currentShape = null;
 let isfill = false;
+let currColor = "black";
 
 shapes.forEach((shape) => {
     shape.addEventListener("click", () => {
@@ -29,6 +31,17 @@ fillColor.addEventListener("click", () => {
     isfill = !isfill;
     fillColor.classList.toggle("text-blue-500")
 })
+
+colors.forEach((color) => {
+    color.addEventListener("click", (e) => {
+        colors.forEach((color) => {
+            color.classList.remove("color-selected");
+        })
+        currColor = e.target.classList[1]
+        color.classList.add("color-selected");
+    })
+})
+
 function takeSnapshot() {
     snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
 }
@@ -88,10 +101,10 @@ canvas.addEventListener("mousemove", (e) => {
         drawCircle(currentX, currentY);
     }
     if (isfill) {
-        ctx.fillStyle = "black";
+        ctx.fillStyle = currColor;
         ctx.fill();
     } else {
-        ctx.strokeStyle = "black";
+        ctx.strokeStyle = currColor;
         ctx.stroke();
     }
 })
