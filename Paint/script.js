@@ -79,13 +79,13 @@ function drawTriangle(currentX, currentY) {
     ctx.closePath();
     ctx.lineWidth = 2;
 }
-canvas.addEventListener("mousedown", (e) => {
+canvas.addEventListener("pointerdown", (e) => {
     isDrawing = true;
     startX = e.offsetX;
     startY = e.offsetY;
     takeSnapshot();
 })
-canvas.addEventListener("mousemove", (e) => {
+canvas.addEventListener("pointermove", (e) => {
     if (!isDrawing) return;
     if (!currentShape) return;
     restoreSnapshot();
@@ -109,6 +109,6 @@ canvas.addEventListener("mousemove", (e) => {
     }
 })
 
-canvas.addEventListener("mouseup", () => {
+canvas.addEventListener("pointerup", () => {
     isDrawing = false;
-})
+});
