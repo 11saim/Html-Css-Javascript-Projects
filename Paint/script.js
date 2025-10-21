@@ -1,6 +1,7 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-const shapes = document.querySelectorAll(".shapes p")
+const shapes = document.querySelectorAll(".shapes p");
+const fillColor = document.querySelector(".fill-color");
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 
@@ -8,6 +9,7 @@ let startX, startY;
 let isDrawing = false;
 let snapshot;
 let currentShape = null;
+let isfill = false;
 
 shapes.forEach((shape) => {
     shape.addEventListener("click", () => {
@@ -23,6 +25,10 @@ shapes.forEach((shape) => {
     })
 })
 
+fillColor.addEventListener("click", () => {
+    isfill = !isfill;
+    fillColor.classList.toggle("text-blue-500")
+})
 function takeSnapshot() {
     snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
 }
@@ -34,9 +40,7 @@ function restoreSnapshot() {
 function drawCircle(currentX, currentY) {
     ctx.beginPath();
     ctx.arc(startX, startY, Math.sqrt((currentX - startX) ** 2 + (currentY - startY) ** 2), 0, Math.PI * 2);
-    ctx.strokeStyle = "black";
     ctx.lineWidth = 2;
-    ctx.stroke();
 }
 
 function drawBox(currentX, currentY) {
@@ -44,9 +48,7 @@ function drawBox(currentX, currentY) {
     const height = currentY - startY;
     ctx.beginPath()
     ctx.rect(startX, startY, width, height);
-    ctx.strokeStyle = "black";
     ctx.lineWidth = 2;
-    ctx.stroke();
 }
 
 function drawTriangle(currentX, currentY) {
@@ -62,9 +64,7 @@ function drawTriangle(currentX, currentY) {
     ctx.lineTo(leftX, leftY);
     ctx.lineTo(rightX, rightY);
     ctx.closePath();
-    ctx.strokeStyle = "black";
     ctx.lineWidth = 2;
-    ctx.stroke();
 }
 canvas.addEventListener("mousedown", (e) => {
     isDrawing = true;
@@ -86,6 +86,13 @@ canvas.addEventListener("mousemove", (e) => {
         drawTriangle(currentX, currentY);
     } else {
         drawCircle(currentX, currentY);
+    }
+    if (isfill) {
+        ctx.fillStyle = "black";
+        ctx.fill();
+    } else {
+        ctx.strokeStyle = "black";
+        ctx.stroke();
     }
 })
 
