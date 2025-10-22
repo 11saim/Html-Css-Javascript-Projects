@@ -3,6 +3,8 @@ const ctx = canvas.getContext("2d");
 const shapes = document.querySelectorAll(".shapes p");
 const fillColor = document.querySelector(".fill-color");
 const colors = document.querySelectorAll(".colors-collection .color");
+const brush = document.querySelector(".brush")
+const size = document.querySelector(".size")
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 
@@ -11,19 +13,33 @@ let isDrawing = false;
 let snapshot;
 let currentShape = null;
 let isfill = false;
+let isBrush = false;
 let currColor = "black";
+
+brush.addEventListener("click", () => {
+    isBrush = !isBrush;
+    brush.classList.toggle("text-blue-500")
+    unSelectShape();
+    currentShape = null;
+})
+
+function unSelectShape() {
+    shapes.forEach((shape) => {
+        shape.classList.remove("text-blue-500");
+    })
+}
 
 shapes.forEach((shape) => {
     shape.addEventListener("click", () => {
-        shapes.forEach((shape) => {
-            shape.classList.remove("text-blue-500");
-        })
+        unSelectShape();
         if (shape.innerText == currentShape) {
             currentShape = null;
         } else {
             currentShape = shape.innerText;
             shape.classList.add("text-blue-500")
         }
+        isBrush = false;
+        brush.classList.remove("text-blue-500");
     })
 })
 
@@ -87,25 +103,38 @@ canvas.addEventListener("pointerdown", (e) => {
 })
 canvas.addEventListener("pointermove", (e) => {
     if (!isDrawing) return;
-    if (!currentShape) return;
-    restoreSnapshot();
+    if (currentShape) {
+        restoreSnapshot();
 
-    const currentX = e.offsetX;
-    const currentY = e.offsetY;
+        const currentX = e.offsetX;
+        const currentY = e.offsetY;
 
-    if (currentShape == "Box") {
-        drawBox(currentX, currentY);
-    } else if (currentShape == "Triangle") {
-        drawTriangle(currentX, currentY);
-    } else {
-        drawCircle(currentX, currentY);
-    }
-    if (isfill) {
-        ctx.fillStyle = currColor;
-        ctx.fill();
-    } else {
+        if (currentShape == "Box") {
+            drawBox(currentX, currentY);
+        } else if (currentShape == "Triangle") {
+            drawTriangle(currentX, currentY);
+        } else {
+            drawCircle(currentX, currentY);
+        }
+        if (isfill) {
+            ctx.fillStyle = currColor;
+            ctx.fill();
+        } else {
+            ctx.strokeStyle = currColor;
+            ctx.stroke();
+        }
+    } else if (isBrush) {
         ctx.strokeStyle = currColor;
+        ctx.lineWidth = size.value;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(e.offsetX, e.offsetY);
         ctx.stroke();
+
+        [startX, startY] = [e.offsetX, e.offsetY];
     }
 })
 
