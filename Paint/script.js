@@ -4,6 +4,7 @@ const shapes = document.querySelectorAll(".shapes p");
 const fillColor = document.querySelector(".fill-color");
 const colors = document.querySelectorAll(".colors-collection .color");
 const brush = document.querySelector(".brush")
+const eraser = document.querySelector(".eraser")
 const size = document.querySelector(".size")
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
@@ -14,11 +15,23 @@ let snapshot;
 let currentShape = null;
 let isfill = false;
 let isBrush = false;
+let isEraser = false;
 let currColor = "black";
 
 brush.addEventListener("click", () => {
     isBrush = !isBrush;
-    brush.classList.toggle("text-blue-500")
+    brush.classList.toggle("text-blue-500");
+    isEraser = null;
+    eraser.classList.remove("text-blue-500");
+    unSelectShape();
+    currentShape = null;
+})
+
+eraser.addEventListener("click", () => {
+    isEraser = !isEraser;
+    eraser.classList.toggle("text-blue-500")
+    isBrush = false;
+    brush.classList.remove("text-blue-500");
     unSelectShape();
     currentShape = null;
 })
@@ -40,6 +53,8 @@ shapes.forEach((shape) => {
         }
         isBrush = false;
         brush.classList.remove("text-blue-500");
+        isEraser = null;
+        eraser.classList.remove("text-blue-500")
     })
 })
 
@@ -95,6 +110,27 @@ function drawTriangle(currentX, currentY) {
     ctx.closePath();
     ctx.lineWidth = 2;
 }
+function brushEraser(tool, e) {
+    if (tool == "eraser") {
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.strokeStyle = "rgba(0,0,0,1)";
+    } else {
+        ctx.globalCompositeOperation = "source-over";
+        ctx.strokeStyle = currColor;
+    }
+    ctx.strokeStyle = currColor;
+    ctx.lineWidth = size.value;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    ctx.beginPath();
+    ctx.moveTo(startX, startY);
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+
+    [startX, startY] = [e.offsetX, e.offsetY];
+}
+
 canvas.addEventListener("pointerdown", (e) => {
     isDrawing = true;
     startX = e.offsetX;
@@ -104,6 +140,7 @@ canvas.addEventListener("pointerdown", (e) => {
 canvas.addEventListener("pointermove", (e) => {
     if (!isDrawing) return;
     if (currentShape) {
+        ctx.globalCompositeOperation = "source-over";
         restoreSnapshot();
 
         const currentX = e.offsetX;
@@ -124,17 +161,9 @@ canvas.addEventListener("pointermove", (e) => {
             ctx.stroke();
         }
     } else if (isBrush) {
-        ctx.strokeStyle = currColor;
-        ctx.lineWidth = size.value;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-
-        ctx.beginPath();
-        ctx.moveTo(startX, startY);
-        ctx.lineTo(e.offsetX, e.offsetY);
-        ctx.stroke();
-
-        [startX, startY] = [e.offsetX, e.offsetY];
+        brushEraser("brush", e);
+    } else if (isEraser) {
+        brushEraser("eraser", e);
     }
 })
 
