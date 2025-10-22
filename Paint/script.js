@@ -23,6 +23,8 @@ brush.addEventListener("click", () => {
     brush.classList.toggle("text-blue-500");
     isEraser = null;
     eraser.classList.remove("text-blue-500");
+    isfill = false;
+    fillColor.classList.remove("text-blue-500");
     unSelectShape();
     currentShape = null;
 })
@@ -32,6 +34,8 @@ eraser.addEventListener("click", () => {
     eraser.classList.toggle("text-blue-500")
     isBrush = false;
     brush.classList.remove("text-blue-500");
+    isfill = false;
+    fillColor.classList.remove("text-blue-500");
     unSelectShape();
     currentShape = null;
 })
@@ -61,6 +65,10 @@ shapes.forEach((shape) => {
 fillColor.addEventListener("click", () => {
     isfill = !isfill;
     fillColor.classList.toggle("text-blue-500")
+    isBrush = false;
+    brush.classList.remove("text-blue-500");
+    isEraser = null;
+    eraser.classList.remove("text-blue-500")
 })
 
 colors.forEach((color) => {
