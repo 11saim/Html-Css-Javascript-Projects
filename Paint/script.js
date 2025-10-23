@@ -1,3 +1,4 @@
+// DOM Elements
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const shapes = document.querySelectorAll(".shapes p");
@@ -6,9 +7,12 @@ const colors = document.querySelectorAll(".colors-collection .color");
 const brush = document.querySelector(".brush")
 const eraser = document.querySelector(".eraser")
 const size = document.querySelector(".size")
+
+// Setting Canvas Height And Width
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 
+// Local Variables
 let startX, startY;
 let isDrawing = false;
 let snapshot;
@@ -18,6 +22,7 @@ let isBrush = false;
 let isEraser = false;
 let currColor = "black";
 
+// Click Event For Brush Option
 brush.addEventListener("click", () => {
     isBrush = !isBrush;
     brush.classList.toggle("text-blue-500");
@@ -29,6 +34,7 @@ brush.addEventListener("click", () => {
     currentShape = null;
 })
 
+// Click Event For Eraser Option
 eraser.addEventListener("click", () => {
     isEraser = !isEraser;
     eraser.classList.toggle("text-blue-500")
@@ -40,12 +46,13 @@ eraser.addEventListener("click", () => {
     currentShape = null;
 })
 
+// Removing Color From Selected Shape
 function unSelectShape() {
     shapes.forEach((shape) => {
         shape.classList.remove("text-blue-500");
     })
 }
-
+// Click Event For Shapes Selection
 shapes.forEach((shape) => {
     shape.addEventListener("click", () => {
         unSelectShape();
@@ -62,6 +69,7 @@ shapes.forEach((shape) => {
     })
 })
 
+// Click Event For Fill Color Option
 fillColor.addEventListener("click", () => {
     isfill = !isfill;
     fillColor.classList.toggle("text-blue-500")
@@ -71,6 +79,7 @@ fillColor.addEventListener("click", () => {
     eraser.classList.remove("text-blue-500")
 })
 
+// Colors Selection Logic
 colors.forEach((color) => {
     color.addEventListener("click", (e) => {
         colors.forEach((color) => {
@@ -81,6 +90,7 @@ colors.forEach((color) => {
     })
 })
 
+
 function takeSnapshot() {
     snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
 }
@@ -89,12 +99,14 @@ function restoreSnapshot() {
     ctx.putImageData(snapshot, 0, 0);
 }
 
+// Circle
 function drawCircle(currentX, currentY) {
     ctx.beginPath();
     ctx.arc(startX, startY, Math.sqrt((currentX - startX) ** 2 + (currentY - startY) ** 2), 0, Math.PI * 2);
     ctx.lineWidth = 2;
 }
 
+// Box
 function drawBox(currentX, currentY) {
     const width = currentX - startX;
     const height = currentY - startY;
@@ -103,6 +115,7 @@ function drawBox(currentX, currentY) {
     ctx.lineWidth = 2;
 }
 
+// Triangle
 function drawTriangle(currentX, currentY) {
     const topX = startX;
     const topY = startY;
@@ -118,11 +131,14 @@ function drawTriangle(currentX, currentY) {
     ctx.closePath();
     ctx.lineWidth = 2;
 }
+// Brush Or Eraser
 function brushEraser(tool, e) {
     if (tool == "eraser") {
+        // If Eraser Then Start Removing From Where Cursor Goes
         ctx.globalCompositeOperation = "destination-out";
         ctx.strokeStyle = "rgba(0,0,0,1)";
     } else {
+        // If Brush Then Start Adding From Where Cursor Goes
         ctx.globalCompositeOperation = "source-over";
         ctx.strokeStyle = currColor;
     }
@@ -138,13 +154,15 @@ function brushEraser(tool, e) {
 
     [startX, startY] = [e.offsetX, e.offsetY];
 }
-
+// Pointer Down Event On Canvas
 canvas.addEventListener("pointerdown", (e) => {
     isDrawing = true;
     startX = e.offsetX;
     startY = e.offsetY;
     takeSnapshot();
 })
+
+// Pointer Move Event On Canvas
 canvas.addEventListener("pointermove", (e) => {
     if (!isDrawing) return;
     if (currentShape) {
@@ -175,6 +193,7 @@ canvas.addEventListener("pointermove", (e) => {
     }
 })
 
+// Pointer Up Event On Canvas
 canvas.addEventListener("pointerup", () => {
     isDrawing = false;
 });
