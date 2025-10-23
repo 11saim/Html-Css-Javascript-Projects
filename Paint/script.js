@@ -7,6 +7,7 @@ const colors = document.querySelectorAll(".colors-collection .color");
 const brush = document.querySelector(".brush")
 const eraser = document.querySelector(".eraser")
 const size = document.querySelector(".size")
+const clearCanvas = document.querySelector(".clear-canvas")
 
 // Setting Canvas Height And Width
 canvas.width = canvas.offsetWidth;
@@ -52,6 +53,7 @@ function unSelectShape() {
         shape.classList.remove("text-blue-500");
     })
 }
+
 // Click Event For Shapes Selection
 shapes.forEach((shape) => {
     shape.addEventListener("click", () => {
@@ -65,7 +67,7 @@ shapes.forEach((shape) => {
         isBrush = false;
         brush.classList.remove("text-blue-500");
         isEraser = null;
-        eraser.classList.remove("text-blue-500")
+        eraser.classList.remove("text-blue-500");
     })
 })
 
@@ -90,11 +92,12 @@ colors.forEach((color) => {
     })
 })
 
-
+// Take Snap Shot
 function takeSnapshot() {
     snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
 }
 
+// Restore Snap Shot
 function restoreSnapshot() {
     ctx.putImageData(snapshot, 0, 0);
 }
@@ -131,6 +134,7 @@ function drawTriangle(currentX, currentY) {
     ctx.closePath();
     ctx.lineWidth = 2;
 }
+
 // Brush Or Eraser
 function brushEraser(tool, e) {
     if (tool == "eraser") {
@@ -154,6 +158,7 @@ function brushEraser(tool, e) {
 
     [startX, startY] = [e.offsetX, e.offsetY];
 }
+
 // Pointer Down Event On Canvas
 canvas.addEventListener("pointerdown", (e) => {
     isDrawing = true;
@@ -197,3 +202,7 @@ canvas.addEventListener("pointermove", (e) => {
 canvas.addEventListener("pointerup", () => {
     isDrawing = false;
 });
+
+clearCanvas.addEventListener("click", () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+})
