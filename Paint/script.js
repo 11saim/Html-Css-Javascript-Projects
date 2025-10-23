@@ -8,6 +8,7 @@ const brush = document.querySelector(".brush")
 const eraser = document.querySelector(".eraser")
 const size = document.querySelector(".size")
 const clearCanvas = document.querySelector(".clear-canvas")
+const saveCanvas = document.querySelector(".save-as-img")
 
 // Setting Canvas Height And Width
 canvas.width = canvas.offsetWidth;
@@ -206,3 +207,17 @@ canvas.addEventListener("pointerup", () => {
 clearCanvas.addEventListener("click", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 })
+
+saveCanvas.addEventListener("click", () => {
+    ctx.save();
+    ctx.globalCompositeOperation = "destination-over";
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    const link = document.createElement("a");
+    link.download = `my_drawing_${Math.random()}.jpg`;
+    link.href = canvas.toDataURL("image/jpeg", 0.9);
+    link.click();
+
+    ctx.restore();
+});
