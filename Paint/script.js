@@ -24,26 +24,30 @@ let isBrush = false;
 let isEraser = false;
 let currColor = "black";
 
-// Click Event For Brush Option
-brush.addEventListener("click", () => {
-    isBrush = !isBrush;
-    brush.classList.toggle("text-blue-500");
-    isEraser = null;
+// Reset Tools
+function resetTools() {
+    isBrush = false;
+    brush.classList.remove("text-blue-500");
+    isEraser = false;
     eraser.classList.remove("text-blue-500");
     isfill = false;
     fillColor.classList.remove("text-blue-500");
+}
+
+// Click Event For Brush Option
+brush.addEventListener("click", () => {
+    resetTools();
+    isBrush = !isBrush;
+    brush.classList.toggle("text-blue-500");
     unSelectShape();
     currentShape = null;
 })
 
 // Click Event For Eraser Option
 eraser.addEventListener("click", () => {
+    resetTools();
     isEraser = !isEraser;
     eraser.classList.toggle("text-blue-500")
-    isBrush = false;
-    brush.classList.remove("text-blue-500");
-    isfill = false;
-    fillColor.classList.remove("text-blue-500");
     unSelectShape();
     currentShape = null;
 })
@@ -65,21 +69,17 @@ shapes.forEach((shape) => {
             currentShape = shape.innerText;
             shape.classList.add("text-blue-500")
         }
-        isBrush = false;
-        brush.classList.remove("text-blue-500");
-        isEraser = null;
-        eraser.classList.remove("text-blue-500");
+        resetTools();
+        isfill = !isfill;
+        fillColor.classList.toggle("text-blue-500");
     })
 })
 
 // Click Event For Fill Color Option
 fillColor.addEventListener("click", () => {
+    resetTools();
     isfill = !isfill;
     fillColor.classList.toggle("text-blue-500")
-    isBrush = false;
-    brush.classList.remove("text-blue-500");
-    isEraser = null;
-    eraser.classList.remove("text-blue-500")
 })
 
 // Colors Selection Logic
@@ -121,17 +121,10 @@ function drawBox(currentX, currentY) {
 
 // Triangle
 function drawTriangle(currentX, currentY) {
-    const topX = startX;
-    const topY = startY;
-    const leftX = startX - (currentX - startX);
-    const leftY = currentY;
-    const rightX = currentX;
-    const rightY = currentY;
-
     ctx.beginPath();
-    ctx.moveTo(topX, topY);
-    ctx.lineTo(leftX, leftY);
-    ctx.lineTo(rightX, rightY);
+    ctx.moveTo(startX, startY);
+    ctx.lineTo(startX - (currentX - startX), currentY);
+    ctx.lineTo(currentX, currentY);
     ctx.closePath();
     ctx.lineWidth = 2;
 }
@@ -143,7 +136,7 @@ function brushEraser(tool, e) {
         ctx.globalCompositeOperation = "destination-out";
         ctx.strokeStyle = "rgba(0,0,0,1)";
     } else {
-        // If Brush Then Start Adding From Where Cursor Goes
+        // If Brush Then Draw Normally
         ctx.globalCompositeOperation = "source-over";
         ctx.strokeStyle = currColor;
     }
@@ -168,30 +161,35 @@ canvas.addEventListener("pointerdown", (e) => {
     takeSnapshot();
 })
 
+// Draw Selected Shape
+function drawShape(e) {
+    ctx.globalCompositeOperation = "source-over";
+    restoreSnapshot();
+
+    const currentX = e.offsetX;
+    const currentY = e.offsetY;
+
+    if (currentShape == "Box") {
+        drawBox(currentX, currentY);
+    } else if (currentShape == "Triangle") {
+        drawTriangle(currentX, currentY);
+    } else {
+        drawCircle(currentX, currentY);
+    }
+    if (isfill) {
+        ctx.fillStyle = currColor;
+        ctx.fill();
+    } else {
+        ctx.strokeStyle = currColor;
+        ctx.stroke();
+    }
+}
+
 // Pointer Move Event On Canvas
 canvas.addEventListener("pointermove", (e) => {
     if (!isDrawing) return;
     if (currentShape) {
-        ctx.globalCompositeOperation = "source-over";
-        restoreSnapshot();
-
-        const currentX = e.offsetX;
-        const currentY = e.offsetY;
-
-        if (currentShape == "Box") {
-            drawBox(currentX, currentY);
-        } else if (currentShape == "Triangle") {
-            drawTriangle(currentX, currentY);
-        } else {
-            drawCircle(currentX, currentY);
-        }
-        if (isfill) {
-            ctx.fillStyle = currColor;
-            ctx.fill();
-        } else {
-            ctx.strokeStyle = currColor;
-            ctx.stroke();
-        }
+        drawShape(e);
     } else if (isBrush) {
         brushEraser("brush", e);
     } else if (isEraser) {
@@ -204,10 +202,12 @@ canvas.addEventListener("pointerup", () => {
     isDrawing = false;
 });
 
+// Clear Canvas
 clearCanvas.addEventListener("click", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 })
 
+// Save Canvas As Image
 saveCanvas.addEventListener("click", () => {
     ctx.save();
     ctx.globalCompositeOperation = "destination-over";
