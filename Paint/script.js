@@ -45,7 +45,7 @@ brush.addEventListener("click", () => {
 
 // Click Event For Eraser Option
 eraser.addEventListener("click", () => {
-    resetTools();
+    resetTools()
     isEraser = !isEraser;
     eraser.classList.toggle("text-blue-500")
     unSelectShape();
@@ -69,17 +69,21 @@ shapes.forEach((shape) => {
             currentShape = shape.innerText;
             shape.classList.add("text-blue-500")
         }
-        resetTools();
-        isfill = !isfill;
-        fillColor.classList.toggle("text-blue-500");
+        isBrush = false;
+        brush.classList.remove("text-blue-500");
+        isEraser = false;
+        eraser.classList.remove("text-blue-500");
     })
 })
 
 // Click Event For Fill Color Option
 fillColor.addEventListener("click", () => {
-    resetTools();
     isfill = !isfill;
     fillColor.classList.toggle("text-blue-500")
+    isBrush = false;
+    brush.classList.remove("text-blue-500");
+    isEraser = false;
+    eraser.classList.remove("text-blue-500")
 })
 
 // Colors Selection Logic
