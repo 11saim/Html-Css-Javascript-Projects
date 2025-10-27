@@ -7,5 +7,36 @@
     <link rel="stylesheet" href="./output.css" />
     <script src="script.js" type="module"></script>
   </head>
-  <body></body>
+  <body>
+    <div>
+      <main>
+        <header>
+          <div class="logo">
+            <img src="./Images/logo.png" alt="Logo" />
+          </div>
+          <div class="heading">
+            <h1></h1>
+          </div>
+        </header>
+        <div class="amount-container">
+          <label for="amount">Amount:</label>
+          <input type="number" name="amount" id="amount" />
+        </div>
+        <div class="currencies">
+          <div class="country-one">
+            <button class="country-code">PKR</button>
+            <img src="./Images/down-arrow.png" alt="down-arrow" />
+          </div>
+          <div class="country-two">
+            <button class="country-code">USD</button>
+            <img src="./Images/down-arrow.png" alt="down-arrow" />
+          </div>
+        </div>
+        <button class="convert">Convert</button>
+        <div class="converted-amount">
+          <p>1 PKR = 285 USD</p>
+        </div>
+      </main>
+    </div>
+  </body>
 </html>
