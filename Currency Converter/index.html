@@ -12,19 +12,20 @@
       class="flex min-h-screen w-full items-center justify-center bg-[#799EFF]"
     >
       <main
-        class="flex w-90 flex-col items-center justify-center rounded-xl bg-[#FEFFC4] p-5"
+        class="m-5 flex w-90 flex-col items-center justify-center rounded-xl bg-[#FEFFC4] p-5"
       >
         <header class="flex flex-col items-center justify-center">
           <div class="logo">
             <img
-              height="150px"
-              width="150px"
+              class="h-30 w-30 sm:h-40 sm:w-40"
               src="./Images/logo.png"
               alt="Logo"
             />
           </div>
           <div class="heading">
-            <h1 class="text-2xl font-bold">CURRENCY CONVERTER</h1>
+            <h1 class="text-center text-xl font-bold sm:text-2xl">
+              CURRENCY CONVERTER
+            </h1>
           </div>
         </header>
         <div
@@ -43,7 +44,7 @@
           class="currencies flex w-full items-center justify-center space-x-2"
         >
           <div
-            class="country-one flex w-1/2 items-center justify-between rounded bg-amber-700 px-2 py-1 text-white"
+            class="country-one flex w-1/2 cursor-pointer items-center justify-between rounded bg-amber-700 px-2 py-1 text-white"
           >
             <button class="country-code">PKR</button>
             <img
@@ -54,7 +55,7 @@
             />
           </div>
           <div
-            class="country-two flex w-1/2 items-center justify-between rounded bg-amber-700 px-2 py-1 text-white"
+            class="country-two flex w-1/2 cursor-pointer items-center justify-between rounded bg-amber-700 px-2 py-1 text-white"
           >
             <button class="country-code">USD</button>
             <img
@@ -66,7 +67,7 @@
           </div>
         </div>
         <button
-          class="convert mt-8 mb-4 w-full rounded bg-amber-400 py-4 text-white"
+          class="convert mt-8 mb-4 w-full cursor-pointer rounded bg-amber-400 py-4 text-white"
         >
           Convert
         </button>
