@@ -9,10 +9,10 @@
   </head>
   <body>
     <div
-      class="flex min-h-screen w-full items-center justify-center bg-[#799EFF]"
+      class="flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-[#1E3A8A] to-[#2563EB]"
     >
       <main
-        class="m-5 flex w-90 flex-col items-center justify-center rounded-xl bg-[#FEFFC4] p-5"
+        class="m-5 flex w-90 flex-col items-center justify-center rounded-xl bg-[#F8FAFC] p-5 shadow-2xl"
       >
         <header class="flex flex-col items-center justify-center">
           <div class="logo">
@@ -23,7 +23,9 @@
             />
           </div>
           <div class="heading">
-            <h1 class="text-center text-xl font-bold sm:text-2xl">
+            <h1
+              class="text-center text-xl font-bold text-[#1E293B] sm:text-2xl"
+            >
               CURRENCY CONVERTER
             </h1>
           </div>
@@ -31,9 +33,9 @@
         <div
           class="amount-container my-8 flex w-full flex-col items-start justify-start"
         >
-          <label class="font-bold" for="amount">Amount:</label>
+          <label class="font-bold text-[#0F172A]" for="amount">Amount:</label>
           <input
-            class="w-full border-b-2 p-3 outline-0"
+            class="w-full border-b-2 border-[#94A3B8] bg-transparent p-3 text-[#1E293B] outline-0 transition focus:border-[#38BDF8]"
             type="number"
             name="amount"
             id="amount"
@@ -44,9 +46,9 @@
           class="currencies flex w-full items-center justify-center space-x-2"
         >
           <div
-            class="country-one flex w-1/2 cursor-pointer items-center justify-between rounded bg-amber-700 px-2 py-1 text-white"
+            class="country-one flex w-1/2 cursor-pointer items-center justify-between rounded bg-gradient-to-r from-[#0EA5E9] to-[#0284C7] px-2 py-1 text-white shadow-md transition hover:from-[#38BDF8] hover:to-[#0EA5E9]"
           >
-            <button class="country-code">PKR</button>
+            <button class="country-code font-semibold">PKR</button>
             <img
               height="30px"
               width="30px"
@@ -55,9 +57,9 @@
             />
           </div>
           <div
-            class="country-two flex w-1/2 cursor-pointer items-center justify-between rounded bg-amber-700 px-2 py-1 text-white"
+            class="country-two flex w-1/2 cursor-pointer items-center justify-between rounded bg-gradient-to-r from-[#0EA5E9] to-[#0284C7] px-2 py-1 text-white shadow-md transition hover:from-[#38BDF8] hover:to-[#0EA5E9]"
           >
-            <button class="country-code">USD</button>
+            <button class="country-code font-semibold">USD</button>
             <img
               height="30px"
               width="30px"
@@ -67,28 +69,35 @@
           </div>
         </div>
         <button
-          class="convert mt-8 mb-4 w-full cursor-pointer rounded bg-amber-400 py-4 text-white"
+          class="convert mt-8 mb-4 w-full cursor-pointer rounded bg-gradient-to-r from-[#FBBF24] to-[#F59E0B] py-4 font-semibold text-white shadow-md transition hover:from-[#FACC15] hover:to-[#EAB308]"
         >
           Convert
         </button>
-        <div class="converted-amount w-full rounded bg-amber-400 py-4">
-          <p class="text-center text-lg text-white">1 PKR = 285 USD</p>
+        <div
+          class="converted-amount w-full rounded bg-gradient-to-r from-[#FBBF24] to-[#F59E0B] py-4 shadow-md"
+        >
+          <p class="text-center text-lg font-medium text-white">
+            1 PKR = 285 USD
+          </p>
         </div>
       </main>
     </div>
-    <div class="countries absolute top-0 min-h-screen w-full bg-amber-500">
+
+    <div
+      class="countries absolute top-0 min-h-screen w-full bg-gradient-to-b from-[#0EA5E9] to-[#0369A1] text-white"
+    >
       <div
-        class="search-bar mx-10 my-5 flex space-x-3 border-b-2 border-white px-5 py-3"
+        class="search-bar mx-10 my-5 flex space-x-3 border-b-2 border-white/50 px-5 py-3"
       >
         <input
-          class="w-full text-white placeholder-white caret-white outline-0"
+          class="w-full bg-transparent text-white placeholder-white/70 caret-white outline-0"
           placeholder="Search Country"
           type="text"
           name="search-country"
           id="search-country"
         />
         <img
-          class="h-8 w-8 cursor-pointer"
+          class="h-8 w-8 cursor-pointer opacity-80 transition hover:opacity-100"
           src="./Images/search.png"
           alt="search"
         />
@@ -96,18 +105,20 @@
       <div class="countries-list">
         <ul class="p-10">
           <li
-            class="mb-5 grid w-full grid-cols-4 border-b border-white pb-3 text-lg font-bold"
+            class="mb-5 grid w-full grid-cols-4 border-b border-white/50 pb-3 text-lg font-bold text-white/90"
           >
             <p class="country-number">No.</p>
             <p class="country-name">Country Name</p>
             <p class="currency-name">Currency Name</p>
             <p class="currency-code">Currency Code</p>
           </li>
-          <li class="grid w-full grid-cols-4">
-            <p class="country-number">1</p>
-            <p class="country-name">Pakistan</p>
-            <p class="currency-name">Pakistani Rupee</p>
-            <p class="currency-code">PKR</p>
+          <li
+            class="mb-3 grid w-full grid-cols-4 py-2 text-white/80 transition hover:bg-white/10 hover:text-white"
+          >
+            <p class="country-number ml-1">1</p>
+            <p class="country-name ml-1">Pakistan</p>
+            <p class="currency-name ml-1">Pakistani Rupee</p>
+            <p class="currency-code ml-1">PKR</p>
           </li>
         </ul>
       </div>
