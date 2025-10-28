@@ -76,5 +76,41 @@
         </div>
       </main>
     </div>
+    <div class="countries absolute top-0 min-h-screen w-full bg-amber-500">
+      <div
+        class="search-bar mx-10 my-5 flex space-x-3 border-b-2 border-white px-5 py-3"
+      >
+        <input
+          class="w-full text-white placeholder-white caret-white outline-0"
+          placeholder="Search Country"
+          type="text"
+          name="search-country"
+          id="search-country"
+        />
+        <img
+          class="h-8 w-8 cursor-pointer"
+          src="./Images/search.png"
+          alt="search"
+        />
+      </div>
+      <div class="countries-list">
+        <ul class="p-10">
+          <li
+            class="mb-5 grid w-full grid-cols-4 border-b border-white pb-3 text-lg font-bold"
+          >
+            <p class="country-number">No.</p>
+            <p class="country-name">Country Name</p>
+            <p class="currency-name">Currency Name</p>
+            <p class="currency-code">Currency Code</p>
+          </li>
+          <li class="grid w-full grid-cols-4">
+            <p class="country-number">1</p>
+            <p class="country-name">Pakistan</p>
+            <p class="currency-name">Pakistani Rupee</p>
+            <p class="currency-code">PKR</p>
+          </li>
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
