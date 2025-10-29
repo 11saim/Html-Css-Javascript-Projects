@@ -18,7 +18,7 @@ function renderCountries() {
     })
 }
 
-leftCountryCode.addEventListener("click", (e) => {
+function openCountriesListPage() {
     countriesListPage.classList.remove("hidden")
     if (!countriesDetail) {
         fetch("./countries-data.json")
@@ -29,11 +29,15 @@ leftCountryCode.addEventListener("click", (e) => {
             })
             .catch((err) => console.log(err))
     }
+}
+
+leftCountryCode.addEventListener("click", (e) => {
+    openCountriesListPage();
 })
 
 
 rightCountryCode.addEventListener("click", (e) => {
-    countriesListPage.classList.remove("hidden")
+    openCountriesListPage();
 })
 
 
