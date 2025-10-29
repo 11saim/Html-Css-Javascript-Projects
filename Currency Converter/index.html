@@ -82,22 +82,26 @@
         </div>
       </main>
     </div>
-
     <div
       class="countries absolute top-0 min-h-screen w-full bg-gradient-to-b from-[#0EA5E9] to-[#0369A1] text-white"
     >
       <div
-        class="search-bar mx-10 my-5 flex space-x-3 border-b-2 border-white/50 px-5 py-3"
+        class="close-btn absolute top-3 right-3 h-5 w-5 cursor-pointer opacity-80 transition hover:opacity-100 sm:top-5 sm:right-5"
+      >
+        <img class="close-icon" src="./Images/close.png" alt="" />
+      </div>
+      <div
+        class="search-bar relative top-10 mx-5 my-5 flex w-[90%] border-b-2 border-white/50 sm:top-0 sm:mx-10 sm:w-96"
       >
         <input
-          class="w-full bg-transparent text-white placeholder-white/70 caret-white outline-0"
+          class="mx-3 w-full bg-transparent py-2 pr-4 text-white placeholder-white/70 caret-white outline-0"
           placeholder="Search Country"
           type="text"
           name="search-country"
           id="search-country"
         />
         <img
-          class="h-8 w-8 cursor-pointer opacity-80 transition hover:opacity-100"
+          class="absolute right-1 bottom-3 h-6 w-6 cursor-pointer opacity-80 transition hover:opacity-100"
           src="./Images/search.png"
           alt="search"
         />
@@ -105,20 +109,15 @@
       <div class="countries-list">
         <ul class="p-10">
           <li
-            class="mb-5 grid w-full grid-cols-4 border-b border-white/50 pb-3 text-lg font-bold text-white/90"
+            class="w-96 space-y-3 rounded border-2 border-white/50 p-5 hover:bg-[#0EA5E9]"
           >
-            <p class="country-number">No.</p>
-            <p class="country-name">Country Name</p>
-            <p class="currency-name">Currency Name</p>
-            <p class="currency-code">Currency Code</p>
-          </li>
-          <li
-            class="mb-3 grid w-full grid-cols-4 py-2 text-white/80 transition hover:bg-white/10 hover:text-white"
-          >
-            <p class="country-number ml-1">1</p>
-            <p class="country-name ml-1">Pakistan</p>
-            <p class="currency-name ml-1">Pakistani Rupee</p>
-            <p class="currency-code ml-1">PKR</p>
+            <h3 class="font-bold">
+              Country Name: <span class="ml-3 font-normal">Pakistan</span>
+            </h3>
+            <p class="font-bold">
+              Currency:
+              <span class="ml-3 font-normal">Pakistani Rupee(PKR)</span>
+            </p>
           </li>
         </ul>
       </div>
