@@ -14,13 +14,14 @@ function renderCountries(openCountry) {
     countriesDetail.forEach((country, index) => {
         const cloneLi = countriesDetailFormat.cloneNode(true);
         cloneLi.classList.remove("hidden");
+        cloneLi.classList.add("flex");
         cloneLi.querySelector("h3 span").innerText = country['Country'];
         cloneLi.querySelector("p span").innerText = `${country['Currency Name']}(${country['Currency Code']})`;
         if (country['Currency Code'] == openCountry.innerText) {
             countryArea.prepend(cloneLi);
+            cloneLi.querySelector(".select img").classList.remove("hidden");
         } else {
             countryArea.appendChild(cloneLi);
-
         }
     })
 }
