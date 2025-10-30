@@ -4,8 +4,8 @@ const countriesListPage = document.querySelector(".countries")
 const closeBtn = document.querySelector(".close-btn")
 const countriesDetailFormat = document.querySelector("ul li")
 const countryArea = document.querySelector("ul")
-let selectedCountryOnLeft = "PKR"
-let selectedCountryOnRight = "USD"
+let selectedCountryOnLeft = leftCountryCode.querySelector("button").innerText;
+let selectedCountryOnRight = rightCountryCode.querySelector("button").innerText;
 let countriesDetail = null
 
 function renderCountries(openCountry) {
@@ -17,7 +17,7 @@ function renderCountries(openCountry) {
         cloneLi.classList.add("flex");
         cloneLi.querySelector("h3 span").innerText = country['Country'];
         cloneLi.querySelector("p span").innerText = `${country['Currency Name']}(${country['Currency Code']})`;
-        if (country['Currency Code'] == openCountry.innerText) {
+        if (country['Currency Code'] == openCountry) {
             countryArea.prepend(cloneLi);
             cloneLi.querySelector(".select img").classList.remove("hidden");
         } else {
@@ -41,7 +41,7 @@ openCountriesListPage();
 
 leftCountryCode.addEventListener("click", (e) => {
     if (countriesDetail) {
-        renderCountries(leftCountryCode.querySelector("button"))
+        renderCountries(selectedCountryOnLeft)
     } else {
         console.log(countriesDetail)
     }
@@ -50,7 +50,7 @@ leftCountryCode.addEventListener("click", (e) => {
 
 rightCountryCode.addEventListener("click", (e) => {
     if (countriesDetail) {
-        renderCountries(rightCountryCode.querySelector("button"))
+        renderCountries(selectedCountryOnRight)
     }
 })
 
