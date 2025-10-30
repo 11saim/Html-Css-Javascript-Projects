@@ -8,36 +8,49 @@ let selectedCountryOnLeft = "PKR"
 let selectedCountryOnRight = "USD"
 let countriesDetail = null
 
-function renderCountries() {
+function renderCountries(openCountry) {
+    countriesListPage.classList.remove("hidden")
+    countryArea.innerHTML = "";
     countriesDetail.forEach((country, index) => {
         const cloneLi = countriesDetailFormat.cloneNode(true);
         cloneLi.classList.remove("hidden");
         cloneLi.querySelector("h3 span").innerText = country['Country'];
         cloneLi.querySelector("p span").innerText = `${country['Currency Name']}(${country['Currency Code']})`;
-        countryArea.appendChild(cloneLi);
+        if (country['Currency Code'] == openCountry.innerText) {
+            countryArea.prepend(cloneLi);
+        } else {
+            countryArea.appendChild(cloneLi);
+
+        }
     })
 }
 
 function openCountriesListPage() {
-    countriesListPage.classList.remove("hidden")
     if (!countriesDetail) {
         fetch("./countries-data.json")
             .then((response) => response.json())
             .then((data) => {
                 countriesDetail = data;
-                renderCountries();
             })
             .catch((err) => console.log(err))
     }
 }
 
+openCountriesListPage();
+
 leftCountryCode.addEventListener("click", (e) => {
-    openCountriesListPage();
+    if (countriesDetail) {
+        renderCountries(leftCountryCode.querySelector("button"))
+    } else {
+        console.log(countriesDetail)
+    }
 })
 
 
 rightCountryCode.addEventListener("click", (e) => {
-    openCountriesListPage();
+    if (countriesDetail) {
+        renderCountries(rightCountryCode.querySelector("button"))
+    }
 })
 
 
