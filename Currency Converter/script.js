@@ -8,7 +8,7 @@ let selectedCountryOnLeft = leftCountryCode.querySelector("button").innerText;
 let selectedCountryOnRight = rightCountryCode.querySelector("button").innerText;
 let countriesDetail = null
 
-function renderCountries(openCountry) {
+function renderCountries(openCountry, openSide) {
     countriesListPage.classList.remove("hidden")
     countryArea.innerHTML = "";
     countriesDetail.forEach((country, index) => {
@@ -23,6 +23,16 @@ function renderCountries(openCountry) {
         } else {
             countryArea.appendChild(cloneLi);
         }
+        cloneLi.addEventListener("click", (e) => {
+            if (openSide == "left") {
+                selectedCountryOnLeft = cloneLi.querySelector(".country-code").innerText.split("(")[1].replace(")", "");
+                leftCountryCode.querySelector("button").innerText = selectedCountryOnLeft;
+            } else if (openSide == "right") {
+                selectedCountryOnRight = cloneLi.querySelector(".country-code").innerText.split("(")[1].replace(")", "");
+                rightCountryCode.querySelector("button").innerText = selectedCountryOnRight;
+            }
+            countriesListPage.classList.add("hidden")
+        })
     })
 }
 
@@ -41,7 +51,7 @@ openCountriesListPage();
 
 leftCountryCode.addEventListener("click", (e) => {
     if (countriesDetail) {
-        renderCountries(selectedCountryOnLeft)
+        renderCountries(selectedCountryOnLeft, "left")
     } else {
         console.log(countriesDetail)
     }
@@ -50,7 +60,7 @@ leftCountryCode.addEventListener("click", (e) => {
 
 rightCountryCode.addEventListener("click", (e) => {
     if (countriesDetail) {
-        renderCountries(selectedCountryOnRight)
+        renderCountries(selectedCountryOnRight, "right")
     }
 })
 
