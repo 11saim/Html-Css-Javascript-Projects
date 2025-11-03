@@ -8,6 +8,7 @@ const searchBar = document.querySelector("#search-country")
 const convert = document.querySelector(".convert")
 const amount = document.querySelector("#amount")
 const result = document.querySelector(".converted-amount p")
+const replace = document.querySelector(".replace")
 let openCountry = null;
 let openSide = null;
 let selectedCountryOnLeft = leftCountryCode.querySelector("button").innerText;
@@ -141,4 +142,12 @@ convert.addEventListener("click", async () => {
     const exchangeRate = await response.json();
     const total_amount = exchangeRate['conversion_rates'][selectedCountryOnRight] * amount.value;
     result.innerText = `${amount.value} ${selectedCountryOnLeft} = ${(Math.round(total_amount * 100) / 100).toFixed(2)} ${selectedCountryOnRight}`
+})
+
+replace.addEventListener("click", () => {
+    const temp = selectedCountryOnLeft;
+    selectedCountryOnLeft = selectedCountryOnRight;
+    selectedCountryOnRight = temp;
+    leftCountryCode.querySelector("button").innerText = selectedCountryOnLeft;
+    rightCountryCode.querySelector("button").innerText = selectedCountryOnRight;
 })
