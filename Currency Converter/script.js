@@ -5,6 +5,9 @@ const closeBtn = document.querySelector(".close-btn")
 const countriesDetailFormat = document.querySelector("ul li")
 const countryArea = document.querySelector("ul")
 const searchBar = document.querySelector("#search-country")
+const convert = document.querySelector(".convert")
+const amount = document.querySelector("#amount")
+const result = document.querySelector(".converted-amount p")
 let openCountry = null;
 let openSide = null;
 let selectedCountryOnLeft = leftCountryCode.querySelector("button").innerText;
@@ -124,4 +127,18 @@ const debouncedSearch = debounce(handleSearch, 500);
 
 searchBar.addEventListener("input", () => {
     debouncedSearch();
+})
+
+amount.addEventListener("input", () => {
+    if (amount.value < 1) {
+        amount.value = 1;
+    }
+})
+
+convert.addEventListener("click", async () => {
+    result.innerText = "Converting..."
+    const response = await fetch(`https://v6.exchangerate-api.com/v6/584868d8db888dea49a5d3f1/latest/${selectedCountryOnLeft}`)
+    const exchangeRate = await response.json();
+    const total_amount = exchangeRate['conversion_rates'][selectedCountryOnRight] * amount.value;
+    result.innerText = `${amount.value} ${selectedCountryOnLeft} = ${(Math.round(total_amount * 100) / 100).toFixed(2)} ${selectedCountryOnRight}`
 })
